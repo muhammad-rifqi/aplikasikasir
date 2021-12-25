@@ -1,25 +1,59 @@
 <?php
-defined('BASEPATH') OR exit('No direct script access allowed');
 
 class Welcome extends CI_Controller {
 
-	/**
-	 * Index Page for this controller.
-	 *
-	 * Maps to the following URL
-	 * 		http://example.com/index.php/welcome
-	 *	- or -
-	 * 		http://example.com/index.php/welcome/index
-	 *	- or -
-	 * Since this controller is set as the default controller in
-	 * config/routes.php, it's displayed at http://example.com/
-	 *
-	 * So any other public methods not prefixed with an underscore will
-	 * map to /index.php/welcome/<method_name>
-	 * @see https://codeigniter.com/user_guide/general/urls.html
-	 */
+	public function __construct() {
+		parent::__construct();
+		$this->load->helper(array('form', 'url','file'));
+		$this->load->library('session');
+  	}
+
+
 	public function index()
 	{
 		$this->load->view('welcome_message');
+	}
+	public function login()
+	{
+
+		header("Access-Control-Allow-Origin: *");
+		header("Access-Control-Allow-Credentials: true");
+		header("Access-Control-Allow-Methods: POST, GET, OPTIONS");
+		header("Access-Control-Allow-Headers: Content-Type, Authorization, X-Requested-With");
+		header("Content-Type: application/json; charset=utf-8");
+		$data = json_decode(file_get_contents("php://input"),true);
+		
+		$this->load->library('session');
+		$email = $data['email'];
+		$password = md5($data['password']);
+		$this->load->model('User_model','proses_login');
+		$data['log'] = $this->proses_login->login($email,$password);
+		$cek = count($data['log']);
+		if($cek > 0) {
+
+			$newdata = array(
+				'success'=>'true',
+				'data'=> array(
+					'id_user'=> $data['log'][0]['id_user'],
+					'username' => $data['log'][0]['username'],
+					'email' => $data['log'][0]['email'],
+					'password' => $data['log'][0]['password'],
+				)
+			);
+
+			echo json_encode($newdata);
+
+		} else {
+
+			$newdata = array(
+				'success'=>'failed',
+				'data'=>null
+			);
+
+			echo json_encode($newdata);
+
+		}
+  
+
 	}
 }
