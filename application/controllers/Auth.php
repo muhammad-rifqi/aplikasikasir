@@ -7,6 +7,7 @@ class Auth extends CI_Controller {
     public function __construct()
     {
         parent::__construct();
+       
         $this->load->helper(array('form', 'url', 'file'));
         $this->load->model('user_model');
         $this->load->library('form_validation');
@@ -14,6 +15,9 @@ class Auth extends CI_Controller {
 
     public function index()
         {
+            if($this->session->userdata('email')){
+                redirect('auth/dashboard');
+            }
                 $data['title'] = 'Login Aplikasi Kasir';
                 $this->load->view('tamplates/auth_header', $data);
                 $this->load->view('auth/login');
@@ -49,6 +53,7 @@ class Auth extends CI_Controller {
 
         public function dashboard()
         {
+             is_logged_in();  
             $data = array();
             $data['title'] = 'Dashboard Aplikasi Kasir';
             $this->load->view('tamplates/header', $data);
