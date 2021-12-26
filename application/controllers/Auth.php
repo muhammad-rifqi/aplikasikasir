@@ -56,6 +56,7 @@ class Auth extends CI_Controller {
              is_logged_in();  
             $data = array();
             $data['title'] = 'Dashboard Aplikasi Kasir';
+            $data['dashboard_active'] = 'active';
             $this->load->view('tamplates/header', $data);
             $this->load->view('admin/dashboard', $data);
             $this->load->view('tamplates/footer');

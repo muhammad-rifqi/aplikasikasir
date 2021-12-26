@@ -54,10 +54,10 @@
           </div>
           <ul class="sidebar-menu">
               <li class="menu-header">Dashboard</li>
-              <li class="active"><a class="nav-link" href=""><i class="fas fa-fire"></i> <span>Dashboard</span></a></li>
+              <li class="<?= isset($dashboard_active)?$dashboard_active:''; ?>"><a class="nav-link" href=""><i class="fas fa-fire"></i> <span>Dashboard</span></a></li>
           
               <li class="menu-header">Menu</li>
-              <li><a class="nav-link" href=""><i class="far fa-square"></i> <span>Blank Page</span></a></li>
+              <li class="<?= isset($warung_active)?$warung_active:''; ?>"><a class="nav-link" href=""><i class="far fa-square"></i> <span>Warung</span></a></li>
               <li class="nav-item dropdown">
                 <a class="active" href="#" class="nav-link has-dropdown" data-toggle="dropdown"><i class="fas fa-columns"></i> <span>Layout</span></a>
                 <ul class="dropdown-menu">
