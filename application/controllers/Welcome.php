@@ -56,4 +56,42 @@ class Welcome extends CI_Controller {
   
 
 	}
+
+	public function register()
+	{
+
+		header("Access-Control-Allow-Origin: *");
+		header("Access-Control-Allow-Credentials: true");
+		header("Access-Control-Allow-Methods: POST, GET, OPTIONS");
+		header("Access-Control-Allow-Headers: Content-Type, Authorization, X-Requested-With");
+		header("Content-Type: application/json; charset=utf-8");
+		$data = json_decode(file_get_contents("php://input"),true);
+		
+		$username = $data['username'];
+		$email = $data['email'];
+		$password = md5($data['password']);
+		$this->load->model('User_model','proses_registrasi');
+		$datareg = $this->proses_registrasi->insert_registrasi($username,$email,$password);
+		if($datareg == true) {
+
+			$newdata = array(
+				'success'=>'true',
+				'data'=> $data
+			);
+
+			echo json_encode($newdata);
+
+		} else {
+
+			$newdata = array(
+				'success'=>'failed',
+				'data'=>null
+			);
+
+			echo json_encode($newdata);
+
+		}
+  
+
+	}
 }

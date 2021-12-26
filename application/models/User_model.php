@@ -17,13 +17,13 @@ public function login($email,$password)
 		return $data;
 }
 
-public function proses_registrasi(){
+public function insert_registrasi($username,$email,$password){
 	$data = array(
-        'username'=>$this->input->post('username'),
-		'email'=>$this->input->post('email'),
-		'password'=>md5($this->input->post('password')),
+        'username'=>$username,
+		'email'=>$email,
+		'password'=>$password,
 	);
-	$this->db->insert('user',$data);
+	return $this->db->insert('user',$data);
 }
 
 
