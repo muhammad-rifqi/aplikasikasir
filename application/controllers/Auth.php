@@ -24,14 +24,7 @@ class Auth extends CI_Controller {
         {
             $email = $this->input->post('email');
             $passwords = $this->input->post('password');
-            $this->form_validation->set_rules('email', 'Email', 'trim|required|valid_email', [
-                'required' => 'Email Harus Diisi !',
-                'valid_email' => 'Email Tidak Benar !'
-            ]);
-            $this->form_validation->set_rules('password', 'Password', 'trim|required', [
-                'required' => 'Password Harus Diisi !'
-            ]);
-            if($this->form_validation->run() != false){
+        
                 $this->load->library('session');
                 $password = md5($passwords);
                 $this->load->model('user_model', 'proses_login');
@@ -50,10 +43,9 @@ class Auth extends CI_Controller {
                     Email atau Password Salah !</div>');
                     redirect('auth');
                 }
-            }
+            
     
         }
-
 
         public function dashboard()
         {
