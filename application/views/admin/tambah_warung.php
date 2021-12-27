@@ -14,14 +14,15 @@
             <div class="row">
               <div class="col-12 col-md-6 col-lg-6">
                 <div class="card">
-                  <form class="needs-validation" novalidate="">
+                  <!-- <form class="needs-validation" novalidate=""> -->
+                  <?=form_open_multipart('auth/proses_add_warung', 'id="add_news" class="needs-validation" novalidate=""') ?>
                     <div class="card-header">
                       <h4>Form Warung</h4>
                     </div>
                     <div class="card-body">
                       <div class="form-group">
                         <label for="nama_warung">Nama Warung</label>
-                        <input id="nama_warung" name="nama_warung" type="text" class="form-control" required="">
+                        <input id="nama_warung" name="nama_warung" type="text" class="form-control" placeholder="Masukan nama warung" required="">
                         <div class="invalid-feedback">
                           Nama Warung harus di isi
                         </div>
@@ -49,21 +50,34 @@
                       </div>
                       <div class="form-group">
                         <label for="keterangan">Keterangan</label>
-                        <textarea id="keterangan" name="keterangan" class="form-control" required=""></textarea>
+                        <textarea id="keterangan" name="keterangan" class="form-control" placeholder="Masukan keterangan" required=""></textarea>
                         <div class="invalid-feedback">
                           Keterangan harus diisi
                         </div>
                       </div>
                       <div class="form-group">
-                      <label for="foto">Foto</label>
+                        <label for="foto">Foto</label>
                         <div class="custom-file">
                             <input type="file" name="foto" class="custom-file-input" id="foto" required="">
-                            <label for="foto" class="custom-file-label">Choose File</label>
+                            <label for="foto" class="custom-file-label">Masukan foto</label>
                             <div class="invalid-feedback mt-2">
                                 Foto harus diisi
                             </div>
-                          </div>
-                        
+                        </div>
+                      </div>
+                      <div class="form-group">
+                        <label for="alamat">Alamat</label>
+                        <textarea id="alamat" name="alamat" class="form-control" placeholder="Masukan alamat" required=""></textarea>
+                        <div class="invalid-feedback">
+                          Alamat harus diisi
+                        </div>
+                      </div>
+                      <div class="form-group">
+                        <label for="kontak">Kontak</label>
+                        <textarea id="kontak" name="kontak" class="form-control" placeholder="Masukan kontak" required=""></textarea>
+                        <div class="invalid-feedback">
+                          Kontak harus diisi
+                        </div>
                       </div>
                     </div>
                     <div class="card-footer text-right">

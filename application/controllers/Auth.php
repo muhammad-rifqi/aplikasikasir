@@ -76,7 +76,6 @@ class Auth extends CI_Controller {
         public function tambah_warung()
         {
             is_logged_in();  
-            $data = array();
             $data['title'] = 'Tambah Warung';
             $data['warung_active'] = 'active';
             $this->load->model('admin_model', 'warung');
@@ -84,6 +83,16 @@ class Auth extends CI_Controller {
             $this->load->view('tamplates/header', $data);
             $this->load->view('admin/tambah_warung', $data);
             $this->load->view('tamplates/footer');
+        }
+
+        public function proses_add_warung() {
+
+            is_logged_in(); 
+            $this->load->model('Admin_model','warung');
+            $this->warung->insert_warung();
+            $this->session->set_flashdata('message', '<div class="alert alert-success" role="alert">Warung berhasil ditambahkan !</div>');
+            redirect('auth/warung');
+           
         }
      
 

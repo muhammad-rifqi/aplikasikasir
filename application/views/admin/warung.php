@@ -16,6 +16,7 @@
                     </div>
                   </div>
                   <div class="card-body">
+                  <?= $this->session->flashdata('message');?>
                     <div class="table-responsive">
                       <table class="table table-bordered table-md">
                         <tr>
@@ -25,7 +26,7 @@
                           <th>Total Terjual</th>
                           <th>Tanggal</th>
                           <th>Keterangan</th>
-                          <th>Foto</th>
+                          <th width="10%">Foto</th>
                           <th>Alamat</th>
                           <th>Kontak</th>
                           <th>Aksi</th>
@@ -45,7 +46,7 @@
                                 <td>Rp.&nbsp;<?=number_format($warung[$a]['total_terjual'],0,"",",")?></td>
                                 <td><?=$warung[$a]['tanggal']?></td>
                                 <td><?=$warung[$a]['keterangan']?></td>
-                                <td><?=$warung[$a]['foto']?></td>
+                                <td><img src="<?= $warung[$a]['foto']?>" class="img-fluid img-thumbnai" width="100%" ></td>
                                 <td><?=$warung[$a]['alamat']?></td>
                                 <td><?=$warung[$a]['kontak']?></td>
                                 <td>
