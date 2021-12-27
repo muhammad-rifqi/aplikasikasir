@@ -57,7 +57,7 @@
                       <div class="form-group">
                       <label for="foto">Foto</label>
                         <div class="custom-file">
-                            <input type="file" name="FOTO" class="custom-file-input" id="foto" required="">
+                            <input type="file" name="foto" class="custom-file-input" id="foto" required="">
                             <label for="foto" class="custom-file-label">Choose File</label>
                             <div class="invalid-feedback mt-2">
                                 Foto harus diisi
@@ -77,4 +77,6 @@
           </div>
     </section>
 </div>
+
+
 
