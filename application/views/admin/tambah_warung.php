@@ -1,3 +1,10 @@
+
+<!-- <script src="<?= base_url('assets/'); ?>js/jquery.maskMoney.min.js" type="text/javascript"></script>
+<script>
+ $(document).ready(function() {
+    $(".money").maskMoney({ thousands:'.', decimal:',', affixesStay: false, precision: 0});
+ }); -->
+<!-- </script> -->
 <div class="main-content">
     <section class="section">
         <div class="section-header">
@@ -13,32 +20,50 @@
                     </div>
                     <div class="card-body">
                       <div class="form-group">
-                        <label>Your Name</label>
-                        <input type="text" class="form-control" required="">
+                        <label for="nama_warung">Nama Warung</label>
+                        <input id="nama_warung" name="nama_warung" type="text" class="form-control" required="">
                         <div class="invalid-feedback">
-                          What's your name?
+                          Nama Warung harus di isi
                         </div>
                       </div>
                       <div class="form-group">
-                        <label>Email</label>
-                        <input type="email" class="form-control" required="">
+                        <label for="pajak_perhari">Pajak Perhari</label>
+                        <input id="pajak_perhari" name="pajak_perhari" class="form-control money" type="number" value="0" required="">
                         <div class="invalid-feedback">
-                          Oh no! Email is invalid.
+                            Pajak Perhari harus di isi
                         </div>
                       </div>
                       <div class="form-group">
-                        <label>Subject</label>
-                        <input type="text" class="form-control" required="">
+                        <label for="total_terjual">Total Terjual</label>
+                        <input id="total_terjual" name="total_terjual" class="form-control money" type="number" value="0" required="">
                         <div class="invalid-feedback">
-                          Good job!
+                            Total Terjual harus di isi
                         </div>
                       </div>
-                      <div class="form-group mb-0">
-                        <label>Message</label>
-                        <textarea class="form-control" required=""></textarea>
+                      <div class="form-group">
+                        <label for="tanggal">Tanggal</label>
+                        <input id="tanggal" name="tanggal" type="date" class="form-control" required="">
                         <div class="invalid-feedback">
-                          What do you wanna say?
+                          Tanggal harus di isi
                         </div>
+                      </div>
+                      <div class="form-group">
+                        <label for="keterangan">Keterangan</label>
+                        <textarea id="keterangan" name="keterangan" class="form-control" required=""></textarea>
+                        <div class="invalid-feedback">
+                          Keterangan harus diisi
+                        </div>
+                      </div>
+                      <div class="form-group">
+                      <label for="foto">Foto</label>
+                        <div class="custom-file">
+                            <input type="file" name="FOTO" class="custom-file-input" id="foto" required="">
+                            <label for="foto" class="custom-file-label">Choose File</label>
+                            <div class="invalid-feedback mt-2">
+                                Foto harus diisi
+                            </div>
+                          </div>
+                        
                       </div>
                     </div>
                     <div class="card-footer text-right">
@@ -52,3 +77,4 @@
           </div>
     </section>
 </div>
+

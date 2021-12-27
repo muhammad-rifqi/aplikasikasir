@@ -21,6 +21,7 @@
  <script src="<?= base_url('assets/'); ?>js/moment.min.js"></script>
  <script src="<?= base_url('assets/'); ?>js/stisla.js"></script>
  
+ 
 
 
  <script src="<?= base_url('assets/'); ?>js/scripts.js"></script>

@@ -41,8 +41,8 @@
                             <tr>
                                 <td><?=$no?></td>
                                 <td><?= $warung[$a]['nama_warung'] ?></td>
-                                <td><?=$warung[$a]['pajak_perhari']?></td>
-                                <td><?=$warung[$a]['total_terjual']?></td>
+                                <td>Rp.&nbsp;<?=number_format($warung[$a]['pajak_perhari'],0,"",",")?></td>
+                                <td>Rp.&nbsp;<?=number_format($warung[$a]['total_terjual'],0,"",",")?></td>
                                 <td><?=$warung[$a]['tanggal']?></td>
                                 <td><?=$warung[$a]['keterangan']?></td>
                                 <td><?=$warung[$a]['foto']?></td>
