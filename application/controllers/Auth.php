@@ -62,6 +62,17 @@ class Auth extends CI_Controller {
             $this->load->view('tamplates/footer');
         }
 
+        public function warung()
+        {
+             is_logged_in();  
+            $data = array();
+            $data['title'] = 'Data Warung';
+            $data['warung_active'] = 'active';
+            $this->load->view('tamplates/header', $data);
+            $this->load->view('admin/warung', $data);
+            $this->load->view('tamplates/footer');
+        }
+
         public function logout()
         {
             $this->session->unset_userdata('email');
