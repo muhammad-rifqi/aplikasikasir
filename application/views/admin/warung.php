@@ -10,50 +10,64 @@
                   <div class="card-header d-flex">
                     <h4>List Warung</h4>
                     <div class="ml-auto pr-2">
-                        <a href="" class="btn btn-primary">
+                        <a href="#" class="btn btn-primary">
                             <i class="fas fa-plus"></i> Tambah
                         </a>
                     </div>
-                   
                   </div>
                   <div class="card-body">
                     <div class="table-responsive">
                       <table class="table table-bordered table-md">
                         <tr>
-                          <th>#</th>
-                          <th>Name</th>
-                          <th>Created At</th>
-                          <th>Status</th>
-                          <th>Action</th>
+                          <th>No</th>
+                          <th>Nama Warung</th>
+                          <th>Pajak Perhari</th>
+                          <th>Total Terjual</th>
+                          <th>Tanggal</th>
+                          <th>Keterangan</th>
+                          <th>Foto</th>
+                          <th>Alamat</th>
+                          <th>Kontak</th>
+                          <th>Aksi</th>
                         </tr>
-                        <tr>
-                          <td>1</td>
-                          <td>Irwansyah Saputra</td>
-                          <td>2017-01-09</td>
-                          <td><div class="badge badge-success">Active</div></td>
-                          <td><a href="#" class="btn btn-secondary">Detail</a></td>
-                        </tr>
-                        <tr>
-                          <td>2</td>
-                          <td>Hasan Basri</td>
-                          <td>2017-01-09</td>
-                          <td><div class="badge badge-success">Active</div></td>
-                          <td><a href="#" class="btn btn-secondary">Detail</a></td>
-                        </tr>
-                        <tr>
-                          <td>3</td>
-                          <td>Kusnadi</td>
-                          <td>2017-01-11</td>
-                          <td><div class="badge badge-danger">Not Active</div></td>
-                          <td><a href="#" class="btn btn-secondary">Detail</a></td>
-                        </tr>
-                        <tr>
-                          <td>4</td>
-                          <td>Rizal Fakhri</td>
-                          <td>2017-01-11</td>
-                          <td><div class="badge badge-success">Active</div></td>
-                          <td><a href="#" class="btn btn-secondary">Detail</a></td>
-                        </tr>
+                        <?php if($warung>0) : ?>	
+                        <tbody>
+                        <?php
+                            $no=1;
+                            $jumlah = count($warung);
+				            for($a=0;$a<$jumlah;$a++){
+
+		                ?>
+                            <tr>
+                                <td><?=$no?></td>
+                                <td><?= $warung[$a]['nama_warung'] ?></td>
+                                <td><?=$warung[$a]['pajak_perhari']?></td>
+                                <td><?=$warung[$a]['total_terjual']?></td>
+                                <td><?=$warung[$a]['tanggal']?></td>
+                                <td><?=$warung[$a]['keterangan']?></td>
+                                <td><?=$warung[$a]['foto']?></td>
+                                <td><?=$warung[$a]['alamat']?></td>
+                                <td><?=$warung[$a]['kontak']?></td>
+                                <td>
+                                <a href="#" class="btn btn-danger btn-sm">
+                                    <i class="fas fa-trash"></i> Hapus
+                                </a> 
+                                </td>
+                            </tr>
+                            <?php
+					            $no++;
+				                    }
+		                    ?>
+                        </tbody>
+                        <?php else:?>
+                    <tfoot>
+                    <tr>
+                        <th colspan="10">
+                            <div class="alert alert-danger text-center m-1 p-2" role="alert">- Data tidak ditemukan -</div>
+                        </th>
+                    </tr>
+                    </tfoot>
+                    <?php endif;?>
                       </table>
                     </div>
                   </div>

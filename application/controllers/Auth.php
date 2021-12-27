@@ -9,8 +9,6 @@ class Auth extends CI_Controller {
         parent::__construct();
        
         $this->load->helper(array('form', 'url', 'file'));
-        $this->load->model('user_model');
-        $this->load->library('form_validation');
     }
 
     public function index()
@@ -68,10 +66,13 @@ class Auth extends CI_Controller {
             $data = array();
             $data['title'] = 'Data Warung';
             $data['warung_active'] = 'active';
+            $this->load->model('admin_model', 'warung');
+            $data['warung'] = $this->warung->getwarung();
             $this->load->view('tamplates/header', $data);
             $this->load->view('admin/warung', $data);
             $this->load->view('tamplates/footer');
         }
+     
 
         public function logout()
         {
