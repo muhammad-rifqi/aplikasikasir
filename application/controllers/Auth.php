@@ -62,7 +62,7 @@ class Auth extends CI_Controller {
 
         public function warung()
         {
-             is_logged_in();  
+            is_logged_in();  
             $data = array();
             $data['title'] = 'Data Warung';
             $data['warung_active'] = 'active';
@@ -70,6 +70,19 @@ class Auth extends CI_Controller {
             $data['warung'] = $this->warung->getwarung();
             $this->load->view('tamplates/header', $data);
             $this->load->view('admin/warung', $data);
+            $this->load->view('tamplates/footer');
+        }
+
+        public function tambah_warung()
+        {
+            is_logged_in();  
+            $data = array();
+            $data['title'] = 'Tambah Warung';
+            $data['warung_active'] = 'active';
+            $this->load->model('admin_model', 'warung');
+            $data['warung'] = $this->warung->getwarung();
+            $this->load->view('tamplates/header', $data);
+            $this->load->view('admin/tambah_warung', $data);
             $this->load->view('tamplates/footer');
         }
      

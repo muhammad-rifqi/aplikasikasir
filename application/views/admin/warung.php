@@ -10,7 +10,7 @@
                   <div class="card-header d-flex">
                     <h4>List Warung</h4>
                     <div class="ml-auto pr-2">
-                        <a href="#" class="btn btn-primary">
+                        <a href=" <?php echo base_url('auth/tambah_warung'); ?>" class="btn btn-primary">
                             <i class="fas fa-plus"></i> Tambah
                         </a>
                     </div>
@@ -51,6 +51,9 @@
                                 <td>
                                 <a href="#" class="btn btn-danger btn-sm">
                                     <i class="fas fa-trash"></i> Hapus
+                                </a> 
+                                <a href="#" class="btn btn-warning btn-sm">
+                                    <i class="fas fa-edit"></i> Edit
                                 </a> 
                                 </td>
                             </tr>
