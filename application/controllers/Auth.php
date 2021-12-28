@@ -94,6 +94,25 @@ class Auth extends CI_Controller {
             redirect('auth/warung');
         }
 
+        public function edit_warung($id)
+        {
+            is_logged_in();  
+            $data['warung_active'] = 'active';
+            $this->load->model('admin_model', 'warung');
+            $data['warung'] = $this->warung->edit_warung($id);
+            $data['title'] = 'Edit warung';
+            $this->load->view('tamplates/header', $data);
+            $this->load->view('admin/edit_warung', $data);
+            $this->load->view('tamplates/footer');
+        }
+
+        public function proses_ubah_warung() {
+            $this->load->model('Admin_model','warung');
+            $this->warung->ubah_warung();
+            $this->session->set_flashdata('message', '<div class="alert alert-success" role="alert">Warung berhasil diubah !</div>');
+            redirect('auth/warung');
+        }
+
         public function hapus_warung($id)
         {
             is_logged_in();

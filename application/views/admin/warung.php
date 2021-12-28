@@ -19,17 +19,17 @@
                   <?= $this->session->flashdata('message');?>
                     <div class="table-responsive">
                       <table class="table table-bordered table-md">
-                        <tr>
-                          <th>No</th>
-                          <th>Nama Warung</th>
-                          <th>Pajak Perhari</th>
-                          <th>Total Terjual</th>
-                          <th>Tanggal</th>
-                          <th>Keterangan</th>
-                          <th width="10%">Foto</th>
-                          <th>Alamat</th>
-                          <th>Kontak</th>
-                          <th>Aksi</th>
+                        <tr class="bg-primary text-white text-center ">
+                          <th class="align-middle">No</th>
+                          <th class="align-middle"  width="10%">Nama Warung</th>
+                          <th class="align-middle">Pajak Perhari</th>
+                          <th class="align-middle">Total Terjual</th>
+                          <th class="align-middle">Tanggal</th>
+                          <th class="align-middle">Keterangan</th>
+                          <th width="20%">Foto</th>
+                          <th class="align-middle">Alamat</th>
+                          <th class="align-middle" width="7%">Kontak</th>
+                          <th class="align-middle" width="7%">Aksi</th>
                         </tr>
                         <?php if(count($warung)>0) : ?>	
                         <tbody>
@@ -53,7 +53,7 @@
                                 <a href="<?= base_url('auth/hapus_warung/'.$warung[$a]['id']); ?>"  onclick="return confirm('Yakin Mau Hapus data ini ??')" class="hapus btn btn-danger btn-sm">
                                     <i class="fas fa-trash"></i> Hapus
                                 </a> 
-                                <a href="#" class="btn btn-warning btn-sm">
+                                <a  href="<?= base_url('auth/edit_warung/'.$warung[$a]['id']); ?>"class="btn btn-warning btn-sm">
                                     <i class="fas fa-edit"></i> Edit
                                 </a> 
                                 </td>
