@@ -27,8 +27,7 @@
                                         <th class="align-middle">Tanggal</th>
                                         <th class="align-middle">Keterangan</th>
                                         <th width="20%">Foto</th>
-                                        <th class="align-middle">Alamat</th>
-                                        <th class="align-middle" width="7%">Kontak</th>
+                                        <th class="align-middle">Pajak 10%</th>
                                         <th class="align-middle" width="7%">Aksi</th>
                                     </tr>
                                     <?php if(count($warung)>0) : ?>
@@ -37,19 +36,19 @@
                             $no=1;
                             $jumlah = count($warung);
 				            for($a=0;$a<$jumlah;$a++){
-
+                      $pajak = (10/100) * $warung[$a]['pajak_perhari'];
 		                ?>
                                         <tr>
                                             <td><?=$no?></td>
                                             <td><?= $warung[$a]['nama_warung'] ?></td>
-                                            <td>Rp.&nbsp;<?=number_format($warung[$a]['pajak_perhari'],0,"",",")?></td>
-                                            <td>Rp.&nbsp;<?=number_format($warung[$a]['total_terjual'],0,"",",")?></td>
+                                            <td>Rp.&nbsp;<?=number_format($warung[$a]['pajak_perhari'],0,"",".")?></td>
+                                            <td>Rp.&nbsp;<?=number_format($warung[$a]['total_terjual'],0,"",".")?></td>
                                             <td><?= $this->libs->ymdhis2dMonthy($warung[$a]['tanggal'])?></td>
                                             <td><?=$warung[$a]['keterangan']?></td>
                                             <td><img src="<?= $warung[$a]['foto']?>" class="img-fluid img-thumbnai"
                                                     width="100%"></td>
-                                            <td><?=$warung[$a]['alamat']?></td>
-                                            <td><?=$warung[$a]['kontak']?></td>
+                                            
+                                            <td><?= number_format($pajak,0,"",".") ?></td>
                                             <td>
                                                 <a href="<?= base_url('auth/hapus_warung/'.$warung[$a]['id']); ?>"
                                                     onclick="return confirm('Yakin Mau Hapus data ini ??')"
