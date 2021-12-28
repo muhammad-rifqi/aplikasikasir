@@ -70,7 +70,7 @@ class Auth extends CI_Controller {
 			$this->load->library('pagination');
 			$config['base_url'] = base_url('auth/warung');
 			$config['total_rows'] = $this->warung->total_warung();
-			$config['per_page'] = 5;
+			$config['per_page'] = 1;
 			$choice = $config["total_rows"] / $config["per_page"];
 			$config["num_links"] 		= floor($choice);
 			$config['first_link']       = 'First';
@@ -105,8 +105,8 @@ class Auth extends CI_Controller {
             is_logged_in();  
             $data['title'] = 'Tambah Warung';
             $data['warung_active'] = 'active';
-            $this->load->model('admin_model', 'warung');
-            $data['warung'] = $this->warung->getwarung();
+            // $this->load->model('admin_model', 'warung');
+            // $data['warung'] = $this->warung->getwarung();
             $this->load->view('tamplates/header', $data);
             $this->load->view('admin/tambah_warung', $data);
             $this->load->view('tamplates/footer');
@@ -117,8 +117,9 @@ class Auth extends CI_Controller {
             is_logged_in(); 
             $this->load->model('Admin_model','warung');
             $this->warung->insert_warung();
-            $this->session->set_flashdata('message', '<div class="alert alert-success" role="alert">Warung berhasil ditambahkan !</div>');
+            $this->session->set_flashdata('message', '<div class="alert alert-success alert-dismissible show fade"><div class="alert-body"><button class="close" data-dismiss="alert"><span>×</span></button>Warung berhasil ditambahkan !</div></div>');
             redirect('auth/warung');
+            
         }
 
         public function edit_warung($id)

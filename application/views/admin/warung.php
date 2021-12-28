@@ -26,10 +26,10 @@
                           <th class="align-middle">Total Terjual</th>
                           <th class="align-middle">Tanggal</th>
                           <th class="align-middle">Keterangan</th>
-                          <th width="20%">Foto</th>
+                          <th class="align-middle" width="20%">Foto</th>
                           <th class="align-middle">Alamat</th>
                           <th class="align-middle" width="7%">Kontak</th>
-                          <th class="align-middle" width="7%">Aksi</th>
+                          <th class="align-middle" width="10%">Aksi</th>
                         </tr>
                         <?php if(count($warung)>0) : ?>	
                         <tbody>
