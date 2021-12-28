@@ -9,9 +9,9 @@ public function __construct()
 }
 
 
-public function getwarung()
+public function getwarung($limit,$start)
 {
-	$sql = $this->db->query("select * from warung")->result_array();
+	$sql = $this->db->query("select * from warung limit ".$limit.", ".$start."");
 	return $sql;
 
 }
@@ -77,6 +77,7 @@ public function hapus_warung($id)
   $this->db->delete('warung');
 }
 
+<<<<<<< HEAD
 public function ubah_warung()
 {
 	$id = $this->input->post('id');
@@ -132,6 +133,14 @@ public function ubah_warung()
 
 
 
+=======
+public function total_warung()
+{
+		return $this->db->query("select * from warung order by id DESC")->num_rows();
+}
+
+
+>>>>>>> 0b6bd9a05cd550ffd05d3e6d0043331d42d75d2e
 
 } 
 
