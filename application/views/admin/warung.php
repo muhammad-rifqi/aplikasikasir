@@ -30,7 +30,7 @@
                                         <th class="align-middle">Total Terjual</th>
                                         <th class="align-middle">Tanggal</th>
                                         <th class="align-middle">Keterangan</th>
-                                        <th width="20%">Foto</th>
+                                        <th class="align-middle" width="20%">Foto</th>
                                         <th class="align-middle">Pajak 10%</th>
                                         <th class="align-middle" width="7%">Aksi</th>
                                     </tr>

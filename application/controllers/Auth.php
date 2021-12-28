@@ -41,8 +41,7 @@ class Auth extends CI_Controller {
                     $this->session->set_userdata($newdata);
                     redirect(base_url() . 'auth/dashboard');
                 } else {
-                    $this->session->set_flashdata('message', '<div class="alert alert-danger" role="alert">
-                    Email atau Password Salah !</div>');
+                    $this->session->set_flashdata('message', '<div class="alert alert-success alert-dismissible show fade"><div class="alert-body"><button class="close" data-dismiss="alert"><span>×</span></button>Email atau Password salah !</div></div>');
                     redirect('auth');
                 }
             
@@ -135,7 +134,7 @@ class Auth extends CI_Controller {
         public function proses_ubah_warung() {
             $this->load->model('Admin_model','warung');
             $this->warung->ubah_warung();
-            $this->session->set_flashdata('message', '<div class="alert alert-success" role="alert">Warung berhasil diubah !</div>');
+            $this->session->set_flashdata('message', '<div class="alert alert-success alert-dismissible show fade"><div class="alert-body"><button class="close" data-dismiss="alert"><span>×</span></button>Warung berhasil diubah !</div></div>');
             redirect('auth/warung');
         }
 
@@ -145,7 +144,7 @@ class Auth extends CI_Controller {
             $id = $this->uri->segment(3);
             $this->load->model('Admin_model','warung');
             $this->warung->hapus_warung($id);
-            $this->session->set_flashdata('message', '<div class="alert alert-success" role="alert">Data berhasil dihapus !</div>');
+            $this->session->set_flashdata('message', '<div class="alert alert-success alert-dismissible show fade"><div class="alert-body"><button class="close" data-dismiss="alert"><span>×</span></button>Warung berhasil dihapus !</div></div>');
             redirect('auth/warung');
         }
      
@@ -156,8 +155,7 @@ class Auth extends CI_Controller {
             $this->session->unset_userdata('email');
             $this->session->unset_userdata('username');
     
-            $this->session->set_flashdata('message', '<div class="alert alert-success" role="alert">
-            Kamu Berhasil Logout !</div>');
+            $this->session->set_flashdata('message', '<div class="alert alert-success alert-dismissible show fade"><div class="alert-body"><button class="close" data-dismiss="alert"><span>×</span></button>Anda Berhasil Logout !</div></div>');
                 redirect('auth');
         }
 }
