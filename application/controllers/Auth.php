@@ -105,8 +105,11 @@ class Auth extends CI_Controller {
             is_logged_in();  
             $data['title'] = 'Tambah Warung';
             $data['warung_active'] = 'active';
+<<<<<<< HEAD
             // $this->load->model('admin_model', 'warung');
             // $data['warung'] = $this->warung->getwarung();
+=======
+>>>>>>> 762b6b4d0091d164bc2292cae191af5e4c1bad0a
             $this->load->view('tamplates/header', $data);
             $this->load->view('admin/tambah_warung', $data);
             $this->load->view('tamplates/footer');
