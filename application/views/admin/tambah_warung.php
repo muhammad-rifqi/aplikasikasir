@@ -12,7 +12,7 @@
         </div>
         <div class="section-body">
             <div class="row">
-              <div class="col-12 col-md-6 col-lg-6">
+              <div class="col-md-6 col-lg-6 offset-3">
                 <div class="card">
                   <!-- <form class="needs-validation" novalidate=""> -->
                   <?=form_open_multipart('auth/proses_add_warung', 'id="add_news" class="needs-validation" novalidate=""') ?>
