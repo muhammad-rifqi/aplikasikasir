@@ -5,37 +5,10 @@
         </div>
         <div class="section-body">
             <div class="row">
-<<<<<<< HEAD
-              <div class="col-12 col-md-6 col-lg-12">
-                <div class="card">
-                  <div class="card-header d-flex">
-                    <h4>List Warung</h4>
-                    <div class="ml-auto pr-2">
-                        <a href=" <?php echo base_url('auth/tambah_warung'); ?>" class="btn btn-primary">
-                            <i class="fas fa-plus"></i> Tambah
-                        </a>
-                    </div>
-                  </div>
-                  <div class="card-body">
-                  <?= $this->session->flashdata('message');?>
-                    <div class="table-responsive">
-                      <table class="table table-bordered table-md">
-                        <tr class="bg-primary text-white text-center ">
-                          <th class="align-middle">No</th>
-                          <th class="align-middle"  width="10%">Nama Warung</th>
-                          <th class="align-middle">Pajak Perhari</th>
-                          <th class="align-middle">Total Terjual</th>
-                          <th class="align-middle">Tanggal</th>
-                          <th class="align-middle">Keterangan</th>
-                          <th class="align-middle" width="20%">Foto</th>
-                          <th class="align-middle">Alamat</th>
-                          <th class="align-middle" width="7%">Kontak</th>
-                          <th class="align-middle" width="10%">Aksi</th>
-                        </tr>
-                        <?php if(count($warung)>0) : ?>	
-                        <tbody>
-                        <?php
-=======
+
+    
+                     
+
                 <div class="col-12 col-md-6 col-lg-12">
                     <div class="card">
                         <div class="card-header d-flex">
@@ -64,12 +37,12 @@
                                     <?php if(count($warung)>0) : ?>
                                     <tbody>
                                         <?php
->>>>>>> 762b6b4d0091d164bc2292cae191af5e4c1bad0a
-                            $no=1;
-                            $jumlah = count($warung);
-				            for($a=0;$a<$jumlah;$a++){
-                      $pajak = (10/100) * $warung[$a]['pajak_perhari'];
-		                ?>
+
+                                            $no=1;
+                                            $jumlah = count($warung);
+                                    for($a=0;$a<$jumlah;$a++){
+                                      $pajak = (10/100) * $warung[$a]['pajak_perhari'];
+		                                  ?>
                                         <tr>
                                             <td><?=$no?></td>
                                             <td><?= $warung[$a]['nama_warung'] ?></td>

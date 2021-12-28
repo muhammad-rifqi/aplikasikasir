@@ -77,10 +77,7 @@ public function hapus_warung($id)
   $this->db->delete('warung');
 }
 
-<<<<<<< HEAD
 
-=======
->>>>>>> 762b6b4d0091d164bc2292cae191af5e4c1bad0a
 public function ubah_warung()
 {
 	$id = $this->input->post('id');
@@ -135,21 +132,14 @@ public function ubah_warung()
 }
 
 
-<<<<<<< HEAD
 
-
-=======
->>>>>>> 762b6b4d0091d164bc2292cae191af5e4c1bad0a
 public function total_warung()
 {
 		return $this->db->query("select * from warung order by id DESC")->num_rows();
 }
 
 
-<<<<<<< HEAD
 
-=======
->>>>>>> 762b6b4d0091d164bc2292cae191af5e4c1bad0a
 
 } 
 
