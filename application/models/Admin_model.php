@@ -65,6 +65,12 @@ public function insert_warung(){
 
 }
 
+public function hapus_warung($id)
+{
+  $this->db->where('id',$id);
+  $this->db->delete('warung');
+}
+
 
 } 
 

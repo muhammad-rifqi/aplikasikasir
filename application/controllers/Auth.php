@@ -92,9 +92,19 @@ class Auth extends CI_Controller {
             $this->warung->insert_warung();
             $this->session->set_flashdata('message', '<div class="alert alert-success" role="alert">Warung berhasil ditambahkan !</div>');
             redirect('auth/warung');
-           
+        }
+
+        public function hapus_warung($id)
+        {
+            is_logged_in();
+            $id = $this->uri->segment(3);
+            $this->load->model('Admin_model','warung');
+            $this->warung->hapus_warung($id);
+            $this->session->set_flashdata('message', '<div class="alert alert-success" role="alert">Data berhasil dihapus !</div>');
+            redirect('auth/warung');
         }
      
+
 
         public function logout()
         {

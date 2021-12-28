@@ -31,7 +31,7 @@
                           <th>Kontak</th>
                           <th>Aksi</th>
                         </tr>
-                        <?php if($warung>0) : ?>	
+                        <?php if(count($warung)>0) : ?>	
                         <tbody>
                         <?php
                             $no=1;
@@ -50,7 +50,7 @@
                                 <td><?=$warung[$a]['alamat']?></td>
                                 <td><?=$warung[$a]['kontak']?></td>
                                 <td>
-                                <a href="#" class="btn btn-danger btn-sm">
+                                <a href="<?= base_url('auth/hapus_warung/'.$warung[$a]['id']); ?>"  onclick="return confirm('Yakin Mau Hapus data ini ??')" class="hapus btn btn-danger btn-sm">
                                     <i class="fas fa-trash"></i> Hapus
                                 </a> 
                                 <a href="#" class="btn btn-warning btn-sm">
@@ -99,3 +99,5 @@
           </div>
         </section>
       </div>
+     
+  
