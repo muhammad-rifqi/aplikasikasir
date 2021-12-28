@@ -44,7 +44,7 @@
                                 <td><?= $warung[$a]['nama_warung'] ?></td>
                                 <td>Rp.&nbsp;<?=number_format($warung[$a]['pajak_perhari'],0,"",",")?></td>
                                 <td>Rp.&nbsp;<?=number_format($warung[$a]['total_terjual'],0,"",",")?></td>
-                                <td><?=$warung[$a]['tanggal']?></td>
+                                <td><?= $this->libs->ymdhis2dMonthy($warung[$a]['tanggal'])?></td>
                                 <td><?=$warung[$a]['keterangan']?></td>
                                 <td><img src="<?= $warung[$a]['foto']?>" class="img-fluid img-thumbnai" width="100%" ></td>
                                 <td><?=$warung[$a]['alamat']?></td>
