@@ -5,6 +5,10 @@
         </div>
         <div class="section-body">
             <div class="row">
+
+    
+                     
+
                 <div class="col-12 col-md-6 col-lg-12">
                     <div class="card">
                         <div class="card-header d-flex">
@@ -26,7 +30,7 @@
                                         <th class="align-middle">Total Terjual</th>
                                         <th class="align-middle">Tanggal</th>
                                         <th class="align-middle">Keterangan</th>
-                                        <th width="20%">Foto</th>
+                                        <th class="align-middle" width="20%">Foto</th>
                                         <th class="align-middle">Pajak 10%</th>
                                         <th class="align-middle" width="7%">Aksi</th>
                                     </tr>
@@ -38,6 +42,7 @@
 				            for($a=0;$a<$jumlah;$a++){
                       $pajak = (10/100) * $warung[$a]['pajak_perhari'];
 		                ?>
+
                                         <tr>
                                             <td><?=++$page?></td>
                                             <td><?= $warung[$a]['nama_warung'] ?></td>

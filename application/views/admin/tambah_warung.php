@@ -1,10 +1,5 @@
 
-<!-- <script src="<?= base_url('assets/'); ?>js/jquery.maskMoney.min.js" type="text/javascript"></script>
-<script>
- $(document).ready(function() {
-    $(".money").maskMoney({ thousands:'.', decimal:',', affixesStay: false, precision: 0});
- }); -->
-<!-- </script> -->
+
 <div class="main-content">
     <section class="section">
         <div class="section-header">
