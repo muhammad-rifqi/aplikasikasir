@@ -22,7 +22,9 @@
       <nav class="navbar navbar-expand-lg main-navbar">
         <div class="form-inline mr-auto">
          
-          
+        <ul class="navbar-nav mr-3">
+            <li><a href="#" data-toggle="sidebar" class="nav-link nav-link-lg"><i class="fas fa-bars"></i></a></li>
+          </ul>
         </div>
         <ul class="navbar-nav navbar-right">
           <li class="dropdown"><a href="#" data-toggle="dropdown" class="nav-link dropdown-toggle nav-link-lg nav-link-user">
@@ -61,7 +63,7 @@
               <li class="menu-header">Menu</li>
               <li class="<?= isset($warung_active)?$warung_active:''; ?>"><a class="nav-link" href="<?= base_url('auth/warung')?>"><i class="fas fa-th-large"></i> <span>Warung</span></a></li>
               <li class="nav-item dropdown">
-                <a class="active" href="#" class="nav-link has-dropdown" data-toggle="dropdown"><i class="fas fa-columns"></i> <span>Layout</span></a>
+                <a href="#" class="nav-link has-dropdown" data-toggle="dropdown"><i class="fas fa-columns"></i> <span>Layout</span></a>
                 <ul class="dropdown-menu">
                   <li><a class="nav-link" href="layout-default.html">Default Layout</a></li>
                   <li><a class="nav-link" href="layout-transparent.html">Transparent Sidebar</a></li>

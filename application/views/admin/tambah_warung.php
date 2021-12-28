@@ -9,7 +9,7 @@
             <div class="row">
               <div class="col-md-6 col-lg-6 offset-3">
                 <div class="card">
-                  <?=form_open_multipart('auth/proses_add_warung', 'id="add_news" class="needs-validation" novalidate=""') ?>
+                  <?=form_open_multipart('auth/proses_add_warung', 'class="needs-validation" novalidate=""') ?>
                     <div class="card-header">
                       <h4>Form Warung</h4>
                     </div>

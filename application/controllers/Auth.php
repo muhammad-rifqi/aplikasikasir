@@ -41,7 +41,7 @@ class Auth extends CI_Controller {
                     $this->session->set_userdata($newdata);
                     redirect(base_url() . 'auth/dashboard');
                 } else {
-                    $this->session->set_flashdata('message', '<div class="alert alert-success alert-dismissible show fade"><div class="alert-body"><button class="close" data-dismiss="alert"><span>×</span></button>Email atau Password salah !</div></div>');
+                    $this->session->set_flashdata('message', '<div class="alert alert-danger alert-dismissible show fade"><div class="alert-body"><button class="close" data-dismiss="alert"><span>×</span></button>Email atau Password salah !</div></div>');
                     redirect('auth');
                 }
             
@@ -67,9 +67,15 @@ class Auth extends CI_Controller {
             $data['warung_active'] = 'active';
             $this->load->model('admin_model', 'warung');
 			$this->load->library('pagination');
+            if ($this->input->post('submit')){
+                $data['keyword'] = $this->input->post('keyword');
+            }else{
+                $data['keyword'] = null;
+            }
+         
 			$config['base_url'] = base_url('auth/warung');
 			$config['total_rows'] = $this->warung->total_warung();
-			$config['per_page'] = 5;
+			$config['per_page'] = 2;
 			$choice = $config["total_rows"] / $config["per_page"];
 			$config["num_links"] 		= floor($choice);
 			$config['first_link']       = 'First';
@@ -78,22 +84,22 @@ class Auth extends CI_Controller {
 			$config['prev_link']        = 'Prev';
 			$config['full_tag_open']    = '<div class="pagging text-center"><nav><ul class="pagination">';
 			$config['full_tag_close']   = '</ul></nav></div>';
-			$config['num_tag_open']     = '<li class="page-item"><span class="page-link">';
-			$config['num_tag_close']    = '</span></li>';
+			$config['num_tag_open']     = '<li class="page-item">';
+			$config['num_tag_close']    = '</li>';
 			$config['cur_tag_open']     = '<li class="page-item active"><span class="page-link">';
 			$config['cur_tag_close']    = '<span class="sr-only">(current)</span></span></li>';
-			$config['next_tag_open']    = '<li class="page-item"><span class="page-link">';
-			$config['next_tagl_close']  = '<span aria-hidden="true">&raquo;</span></span></li>';
-			$config['prev_tag_open']    = '<li class="page-item"><span class="page-link">';
-			$config['prev_tagl_close']  = '</span>Next</li>';
-			$config['first_tag_open']   = '<li class="page-item"><span class="page-link">';
-			$config['first_tagl_close'] = '</span></li>';
-			$config['last_tag_open']    = '<li class="page-item"><span class="page-link">';
-			$config['last_tagl_close']  = '</span></li>';
+			$config['next_tag_open']    = '<li class="page-item">';
+			$config['next_tagl_close']  = '<span aria-hidden="true">&raquo;</span></li>';
+			$config['prev_tag_open']    = '<li class="page-item">';
+			$config['prev_tagl_close']  = 'Next</li>';
+			$config['first_tag_open']   = '<li class="page-item">';
+			$config['first_tagl_close'] = '</li>';
+			$config['last_tag_open']    = '<li class="page-item">';
+			$config['last_tagl_close']  = '</li>';
 			$this->pagination->initialize($config);
 			$d['page'] = ($this->uri->segment(3)) ? $this->uri->segment(3) : 0;
             $data['page'] = $this->uri->segment(3);
-			$data['warung'] = $this->warung->getwarung($d['page'],$config["per_page"])->result_array();
+			$data['warung'] = $this->warung->getwarung($d['page'],$config["per_page"],$data['keyword'])->result_array();
 			$this->load->view('tamplates/header', $data);
             $this->load->view('admin/warung', $data);
             $this->load->view('tamplates/footer');
