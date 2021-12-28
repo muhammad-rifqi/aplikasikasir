@@ -5,10 +5,6 @@
         </div>
         <div class="section-body">
             <div class="row">
-
-    
-                     
-
                 <div class="col-12 col-md-6 col-lg-12">
                     <div class="card">
                         <div class="card-header d-flex">
@@ -53,7 +49,7 @@
                                             <td><img src="<?= $warung[$a]['foto']?>" class="img-fluid img-thumbnai"
                                                     width="100%"></td>
                                             
-                                            <td><?= number_format($pajak,0,"",".") ?></td>
+                                            <td>Rp.&nbsp;<?= number_format($pajak,0,"",".") ?></td>
                                             <td>
                                                 <a href="<?= base_url('auth/hapus_warung/'.$warung[$a]['id']); ?>"
                                                     onclick="return confirm('Yakin Mau Hapus data ini ??')"

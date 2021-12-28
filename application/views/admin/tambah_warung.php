@@ -75,7 +75,8 @@
                       </div>
                     </div>
                     <div class="card-footer text-right">
-                      <button class="btn btn-primary">Submit</button>
+                      <a href="<?= base_url('auth/warung'); ?>" class="btn btn-warning"><i class="fa fa-arrow-left" aria-hidden="true"></i> Kembali</a>
+                      <button class="btn btn-primary">Tambah <i class="fa fa-plus" aria-hidden="true"></i></button>
                     </div>
                   </form>
                 </div>
