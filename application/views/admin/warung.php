@@ -33,13 +33,13 @@
                                     <?php if(count($warung)>0) : ?>
                                     <tbody>
                                         <?php
-                            $no=1;
+                         
                             $jumlah = count($warung);
 				            for($a=0;$a<$jumlah;$a++){
                       $pajak = (10/100) * $warung[$a]['pajak_perhari'];
 		                ?>
                                         <tr>
-                                            <td><?=$no?></td>
+                                            <td><?=++$page?></td>
                                             <td><?= $warung[$a]['nama_warung'] ?></td>
                                             <td>Rp.&nbsp;<?=number_format($warung[$a]['pajak_perhari'],0,"",".")?></td>
                                             <td>Rp.&nbsp;<?=number_format($warung[$a]['total_terjual'],0,"",".")?></td>
@@ -62,7 +62,6 @@
                                             </td>
                                         </tr>
                                         <?php
-					            $no++;
 				                    }
 		                    ?>
                                     </tbody>

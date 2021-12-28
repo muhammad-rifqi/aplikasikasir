@@ -70,7 +70,7 @@ class Auth extends CI_Controller {
 			$this->load->library('pagination');
 			$config['base_url'] = base_url('auth/warung');
 			$config['total_rows'] = $this->warung->total_warung();
-			$config['per_page'] = 5;
+			$config['per_page'] = 2;
 			$choice = $config["total_rows"] / $config["per_page"];
 			$config["num_links"] 		= floor($choice);
 			$config['first_link']       = 'First';
@@ -93,6 +93,7 @@ class Auth extends CI_Controller {
 			$config['last_tagl_close']  = '</span></li>';
 			$this->pagination->initialize($config);
 			$d['page'] = ($this->uri->segment(3)) ? $this->uri->segment(3) : 0;
+            $data['page'] = $this->uri->segment(3);
 			$data['warung'] = $this->warung->getwarung($d['page'],$config["per_page"])->result_array();
 			$this->load->view('tamplates/header', $data);
             $this->load->view('admin/warung', $data);
