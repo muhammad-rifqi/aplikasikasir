@@ -144,7 +144,7 @@ public function total_warung()
 public function getdatawarung()
 {
 	$hari_ini = date("Y-m-d");
-	$sql = $this->db->query("select * from warung where modify = '".$hari_ini."'")->result_array();
+	$sql = $this->db->query("select * from warung where tanggal = '".$hari_ini."'")->result_array();
 	$jumlah = count($sql);
 	for($i=0;$i<$jumlah;$i++){
 	$pajak = (10/100) * $sql[$i]['pajak_perhari']; 
