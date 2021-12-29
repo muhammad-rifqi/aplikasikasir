@@ -164,11 +164,23 @@ class Auth extends CI_Controller {
      
 
 
+
+
         public function logout()
         {
             $this->session->unset_userdata('email');
             $this->session->unset_userdata('username');
             $this->session->set_flashdata('message', '<div class="alert alert-success alert-dismissible show fade"><div class="alert-body"><button class="close" data-dismiss="alert"><span>×</span></button>Anda Berhasil Logout !</div></div>');
                 redirect('auth');
+        }
+
+
+        public function pajak()
+        {
+            is_logged_in();  
+            $data['title'] = 'Pajak';
+            $this->load->view('tamplates/header', $data);
+            $this->load->view('admin/pajak', $data);
+            $this->load->view('tamplates/footer');
         }
 }

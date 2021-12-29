@@ -62,6 +62,7 @@
           
               <li class="menu-header">Menu</li>
               <li class="<?= isset($warung_active)?$warung_active:''; ?>"><a class="nav-link" href="<?= base_url('auth/warung')?>"><i class="fas fa-th-large"></i> <span>Warung</span></a></li>
+              <li class="<?= $this->uri->segment(2) == 'pajak' ? 'active' : '' ; ?>"><a class="nav-link" href="<?= base_url('auth/pajak')?>"><i class="fas fa-th-large"></i> <span>Pajak</span></a></li>
               <li class="nav-item dropdown">
                 <a href="#" class="nav-link has-dropdown" data-toggle="dropdown"><i class="fas fa-columns"></i> <span>Layout</span></a>
                 <ul class="dropdown-menu">
