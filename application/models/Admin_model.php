@@ -183,5 +183,21 @@ public function total_produk()
 }
 
 
+public function getbarangmasuk($limit,$start,$keyword)
+{
+	
+	$sql = $this->db->query("select * from barang_masuk where nama_produk like '%".$keyword."%' limit ".$limit.", ".$start."");
+	return $sql;
+
+}
+
+
+public function total_barang_masuk()
+{
+	return $this->db->query("select * from barang_masuk order by id_produk DESC")->num_rows();
+}
+
+
+
 } 
 
