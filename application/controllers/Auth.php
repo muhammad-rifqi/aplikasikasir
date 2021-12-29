@@ -75,7 +75,7 @@ class Auth extends CI_Controller {
          
 			$config['base_url'] = base_url('auth/warung');
 			$config['total_rows'] = $this->warung->total_warung();
-			$config['per_page'] = 2;
+			$config['per_page'] = 5;
 			$choice = $config["total_rows"] / $config["per_page"];
 			$config["num_links"] 		= floor($choice);
 			$config['first_link']       = 'First';
