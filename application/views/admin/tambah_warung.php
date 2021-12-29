@@ -9,7 +9,7 @@
             <div class="row">
               <div class="col-md-6 col-lg-6 offset-3">
                 <div class="card">
-                  <?=form_open_multipart('auth/proses_add_warung', 'id="add_news" class="needs-validation" novalidate=""') ?>
+                  <?=form_open_multipart('auth/proses_add_warung', 'class="needs-validation" novalidate=""') ?>
                     <div class="card-header">
                       <h4>Form Warung</h4>
                     </div>
@@ -75,7 +75,8 @@
                       </div>
                     </div>
                     <div class="card-footer text-right">
-                      <button class="btn btn-primary">Submit</button>
+                      <a href="<?= base_url('auth/warung'); ?>" class="btn btn-warning"><i class="fa fa-arrow-left" aria-hidden="true"></i> Kembali</a>
+                      <button class="btn btn-primary">Tambah <i class="fa fa-plus" aria-hidden="true"></i></button>
                     </div>
                   </form>
                 </div>

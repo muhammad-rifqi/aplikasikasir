@@ -1,14 +1,21 @@
 <div class="main-content">
     <section class="section">
-        <div class="section-header">
+        <div class="section-header d-flex">
             <h1><?= $title; ?></h1>
-        </div>
+            <div class="ml-auto ">
+                <form method="post" action="<?= base_url('auth/warung')?>">
+                    <div class="input-group">
+                        <input type="text" class="form-control" name="keyword" placeholder="Search" autocomplete="off" autofocus>
+                        <div class="input-group-append">
+                             <input class="btn btn-primary" type="submit" name="submit">
+                             <!-- <i class="fas fa-search"></i> -->
+                        </div>
+                     </div>
+                </form>
+           </div>
+        </div>   
         <div class="section-body">
             <div class="row">
-
-    
-                     
-
                 <div class="col-12 col-md-6 col-lg-12">
                     <div class="card">
                         <div class="card-header d-flex">
@@ -25,17 +32,17 @@
                                 <table class="table table-bordered table-md">
                                     <tr class="bg-primary text-white text-center ">
                                         <th class="align-middle">No</th>
-                                        <th class="align-middle" width="10%">Nama Warung</th>
+                                        <th class="align-middle" width="15%">Nama Warung</th>
                                         <th class="align-middle">Pajak Perhari</th>
                                         <th class="align-middle">Total Terjual</th>
                                         <th class="align-middle">Tanggal</th>
                                         <th class="align-middle">Keterangan</th>
-                                        <th class="align-middle" width="20%">Foto</th>
+                                        <th class="align-middle" width="50%">Foto</th>
                                         <th class="align-middle">Pajak 10%</th>
-                                        <th class="align-middle" width="7%">Aksi</th>
+                                        <th class="align-middle" width="13%">Aksi</th>
                                     </tr>
                                     <?php if(count($warung)>0) : ?>
-                                    <tbody>
+                                    <tbody >
                                         <?php
                          
                             $jumlah = count($warung);
@@ -43,17 +50,17 @@
                       $pajak = (10/100) * $warung[$a]['pajak_perhari'];
 		                ?>
 
-                                        <tr>
+                                        <tr >
                                             <td><?=++$page?></td>
                                             <td><?= $warung[$a]['nama_warung'] ?></td>
                                             <td>Rp.&nbsp;<?=number_format($warung[$a]['pajak_perhari'],0,"",".")?></td>
                                             <td>Rp.&nbsp;<?=number_format($warung[$a]['total_terjual'],0,"",".")?></td>
                                             <td><?= $this->libs->ymdhis2dMonthy($warung[$a]['tanggal'])?></td>
                                             <td><?=$warung[$a]['keterangan']?></td>
-                                            <td><img src="<?= $warung[$a]['foto']?>" class="img-fluid img-thumbnai"
+                                            <td><img src="<?= $warung[$a]['foto']?>" class="img-fluid"
                                                     width="100%"></td>
                                             
-                                            <td><?= number_format($pajak,0,"",".") ?></td>
+                                            <td>Rp.&nbsp;<?= number_format($pajak,0,"",".") ?></td>
                                             <td>
                                                 <a href="<?= base_url('auth/hapus_warung/'.$warung[$a]['id']); ?>"
                                                     onclick="return confirm('Yakin Mau Hapus data ini ??')"
