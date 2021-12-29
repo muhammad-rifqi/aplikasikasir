@@ -167,5 +167,21 @@ public function getdatawarung()
 
 }
 
+
+public function getproduk($limit,$start,$keyword)
+{
+	
+	$sql = $this->db->query("select * from produk where nama_produk like '%".$keyword."%' limit ".$limit.", ".$start."");
+	return $sql;
+
+}
+
+
+public function total_produk()
+{
+	return $this->db->query("select * from produk order by id_produk DESC")->num_rows();
+}
+
+
 } 
 
