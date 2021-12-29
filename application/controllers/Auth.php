@@ -69,13 +69,17 @@ class Auth extends CI_Controller {
 			$this->load->library('pagination');
             if ($this->input->post('submit')){
                 $data['keyword'] = $this->input->post('keyword');
+                $this->session->set_userdata('keyword', $data['keyword']);
             }else{
-                $data['keyword'] = null;
+                $data['keyword'] = $this->session->userdata('keyword');
             }
          
+            $this->db->like('nama_warung',$data['keyword']);
+            $this->db->from('warung');
 			$config['base_url'] = base_url('auth/warung');
-			$config['total_rows'] = $this->warung->total_warung();
-			$config['per_page'] = 5;
+			$config['total_rows'] = $this->db->count_all_results();
+			// $config['total_rows'] = $this->warung->total_warung();
+			$config['per_page'] = 3;
 			$choice = $config["total_rows"] / $config["per_page"];
 			$config["num_links"] 		= floor($choice);
 			$config['first_link']       = 'First';
