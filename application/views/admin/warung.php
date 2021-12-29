@@ -7,7 +7,7 @@
                     <div class="input-group">
                         <input type="text" class="form-control" name="keyword" placeholder="Search" autocomplete="off" autofocus>
                         <div class="input-group-append">
-                             <input class="btn btn-primary" type="submit" name="submit">
+                             <input class="btn btn-primary" type="submit" name="submit" value="cari">
                              <!-- <i class="fas fa-search"></i> -->
                         </div>
                      </div>
