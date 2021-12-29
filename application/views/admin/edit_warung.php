@@ -12,7 +12,7 @@
         </div>
         <div class="section-body">
             <div class="row">
-              <div class="col-md-6 col-lg-6 offset-3">
+              <div class="col-md-6 col-sm-12 col-lg-6 offset-lg-3">
                 <div class="card">
                   <?=form_open_multipart('auth/proses_ubah_warung', 'class="needs-validation" novalidate=""') ?>
                   <input type="hidden" name="id" value="<?= $warung[0]['id'] ?>">

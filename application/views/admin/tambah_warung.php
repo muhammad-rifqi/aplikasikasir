@@ -7,7 +7,7 @@
         </div>
         <div class="section-body">
             <div class="row">
-              <div class="col-md-6 col-lg-6 offset-3">
+            <div class="col-md-6 col-sm-12 col-lg-6 offset-lg-3">
                 <div class="card">
                   <?=form_open_multipart('auth/proses_add_warung', 'class="needs-validation" novalidate=""') ?>
                     <div class="card-header">
