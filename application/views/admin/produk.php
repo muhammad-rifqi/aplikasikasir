@@ -58,16 +58,16 @@
                                                     width="30%"></td>
                                             <td><?= $this->libs->ymdhis2dMonthy($produk[$a]['tanggal_update'])?></td>
                                             <td>
-                                                <a href="<?= base_url('auth/hapus_produk/'.$produk[$a]['id']); ?>"
+                                                <a href="<?= base_url('auth/hapus_produk/'.$produk[$a]['id_produk']); ?>"
                                                     onclick="return confirm('Yakin Mau Hapus data ini ??')"
                                                     class="hapus btn btn-danger btn-sm">
                                                     <i class="fas fa-trash"></i> Hapus
                                                 </a>
-                                                <a href="<?= base_url('auth/edit_produk/'.$produk[$a]['id']); ?>"
+                                                <a href="<?= base_url('auth/edit_produk/'.$produk[$a]['id_produk']); ?>"
                                                     class="btn btn-warning btn-sm">
                                                     <i class="fas fa-edit"></i> Edit
                                                 </a>
-                                                <a href="<?= base_url('auth/detail_produk/'.$produk[$a]['id']); ?>"
+                                                <a href="<?= base_url('auth/detail_produk/'.$produk[$a]['id_produk']); ?>"
                                                     class="btn btn-warning btn-sm">
                                                     <i class="fas fa-eye"></i> View
                                                 </a>
