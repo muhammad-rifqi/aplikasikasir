@@ -164,6 +164,8 @@ class Auth extends CI_Controller {
      
 
 
+
+
         public function logout()
         {
             $this->session->unset_userdata('email');

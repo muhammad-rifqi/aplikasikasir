@@ -57,6 +57,18 @@ class Welcome extends CI_Controller {
 
 	}
 
+	
+	public function api_warung()
+	{
+	 
+		$this->load->model('Admin_model','warung');
+		$array = $this->warung->getdatawarung();
+		echo json_encode($array);
+	}
+ 
+
+
+
 	public function register()
 	{
 
@@ -92,6 +104,7 @@ class Welcome extends CI_Controller {
 
 		}
   
+		
 
 	}
 }

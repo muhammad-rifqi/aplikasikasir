@@ -141,6 +141,31 @@ public function total_warung()
 
 
 
+public function getdatawarung()
+{
+	
+	$sql = $this->db->query("select * from warung")->result_array();
+	$jumlah = count($sql);
+	for($i=0;$i<$jumlah;$i++){
+	$pajak = (10/100) * $sql[$i]['pajak_perhari']; 
+		$row[] = array(
+			"id"=> $sql[$i]['id'],
+			"nama_warung"=> $sql[$i]['nama_warung'],
+			"pajak_perhari"=> $sql[$i]['pajak_perhari'],
+			"total_terjual"=> $sql[$i]['total_terjual'],
+			"tanggal"=> $sql[$i]['tanggal'],
+			"keterangan"=> $sql[$i]['keterangan'],
+			"foto"=> $sql[$i]['foto'],
+			"alamat"=> $sql[$i]['alamat'],
+			"kontak"=> $sql[$i]['kontak'],
+			"modify"=> $sql[$i]['modify'],
+			"total_pajak"=> $pajak,
+		);
+				
+	}
+	return $row;
+
+}
 
 } 
 
