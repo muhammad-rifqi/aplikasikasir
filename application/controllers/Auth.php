@@ -100,6 +100,9 @@ class Auth extends CI_Controller {
 			$d['page'] = ($this->uri->segment(3)) ? $this->uri->segment(3) : 0;
             $data['page'] = $this->uri->segment(3);
 			$data['warung'] = $this->warung->getwarung($d['page'],$config["per_page"],$data['keyword'])->result_array();
+            // echo "<pre>";
+            // var_dump($data['keyword']); 
+            // echo "</pre>";
 			$this->load->view('tamplates/header', $data);
             $this->load->view('admin/warung', $data);
             $this->load->view('tamplates/footer');

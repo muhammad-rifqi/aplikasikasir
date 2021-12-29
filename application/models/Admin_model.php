@@ -9,9 +9,10 @@ public function __construct()
 }
 
 
-public function getwarung($limit,$start)
+public function getwarung($limit,$start,$keyword)
 {
-	$sql = $this->db->query("select * from warung limit ".$limit.", ".$start."");
+	
+	$sql = $this->db->query("select * from warung where nama_warung like '%".$keyword."%' limit ".$limit.", ".$start."");
 	return $sql;
 
 }
