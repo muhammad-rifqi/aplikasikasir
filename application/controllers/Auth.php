@@ -272,6 +272,55 @@ class Auth extends CI_Controller {
         }
 
 
+        public function barang_keluar()
+        {
+            is_logged_in();  
+            $data = array();
+            $data['title'] = 'Data Barang Keluar';
+            $this->load->model('admin_model', 'barang_keluar');
+			$this->load->library('pagination');
+            if ($this->input->post('submit')){
+                $data['keyword'] = $this->input->post('keyword');
+                $this->session->set_userdata('keyword', $data['keyword']);
+            }else{
+                $data['keyword'] = $this->session->userdata('keyword');
+            }
+            $this->db->like('nama_produk',$data['keyword']);
+            $this->db->from('barang_keluar');
+			$config['base_url'] = base_url('auth/barang_keluar');
+			$config['total_rows'] = $this->db->count_all_results();
+			// $config['total_rows'] = $this->warung->total_warung();
+			$config['per_page'] = 5;
+			$choice = $config["total_rows"] / $config["per_page"];
+			$config["num_links"] 		= floor($choice);
+			$config['first_link']       = 'First';
+			$config['last_link']        = 'Last';
+			$config['next_link']        = 'Next';
+			$config['prev_link']        = 'Prev';
+			$config['full_tag_open']    = '<div class="pagging text-center"><nav><ul class="pagination">';
+			$config['full_tag_close']   = '</ul></nav></div>';
+			$config['num_tag_open']     = '<li class="page-item">';
+			$config['num_tag_close']    = '</li>';
+			$config['cur_tag_open']     = '<li class="page-item active"><span class="page-link">';
+			$config['cur_tag_close']    = '<span class="sr-only">(current)</span></span></li>';
+			$config['next_tag_open']    = '<li class="page-item">';
+			$config['next_tagl_close']  = '<span aria-hidden="true">&raquo;</span></li>';
+			$config['prev_tag_open']    = '<li class="page-item">';
+			$config['prev_tagl_close']  = 'Next</li>';
+			$config['first_tag_open']   = '<li class="page-item">';
+			$config['first_tagl_close'] = '</li>';
+			$config['last_tag_open']    = '<li class="page-item">';
+			$config['last_tagl_close']  = '</li>';
+			$this->pagination->initialize($config);
+			$d['page'] = ($this->uri->segment(3)) ? $this->uri->segment(3) : 0;
+            $data['page'] = $this->uri->segment(3);
+			$data['barang_keluar'] = $this->barang_keluar->getbarangkeluar($d['page'],$config["per_page"],$data['keyword'])->result_array();
+			$this->load->view('tamplates/header', $data);
+            $this->load->view('admin/barang_keluar', $data);
+            $this->load->view('tamplates/footer');
+            
+        }
+
 
 
         public function logout()
