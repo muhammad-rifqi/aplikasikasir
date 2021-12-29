@@ -64,6 +64,10 @@
                                                     class="btn btn-warning btn-sm">
                                                     <i class="fas fa-edit"></i> Edit
                                                 </a>
+                                                <a href="<?= base_url('auth/detail_warung/'.$warung[$a]['id']); ?>"
+                                                    class="btn btn-warning btn-sm">
+                                                    <i class="fas fa-eye"></i> View
+                                                </a>
                                             </td>
                                         </tr>
                                         <?php
