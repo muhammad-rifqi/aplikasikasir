@@ -146,6 +146,7 @@ public function getdatawarung()
 	$hari_ini = date("Y-m-d");
 	$sql = $this->db->query("select * from warung where tanggal = '".$hari_ini."'")->result_array();
 	$jumlah = count($sql);
+	if($jumlah > 0){
 	for($i=0;$i<$jumlah;$i++){
 	$pajak = (10/100) * $sql[$i]['pajak_perhari']; 
 		$row[] = array(
@@ -162,6 +163,9 @@ public function getdatawarung()
 			"total_pajak"=> $pajak,
 		);
 				
+	}
+	}else{
+		$row = array();
 	}
 	return $row;
 
@@ -213,6 +217,18 @@ public function total_barang_keluar()
 	return $this->db->query("select * from barang_keluar order by id_produk DESC")->num_rows();
 }
 
+
+public function insert_barang_keluar(){
+
+	$sql = $this->db->query("insert into barang_keluar(id_produk,jumlah)values('".$this->input->post('id_produk')."','".$this->input->post('jumlah')."')");
+	if($sql == true){
+	$response = "success";
+	}else{
+	$response = "failed";
+	}
+	echo $response;
+
+}
 
 } 
 
