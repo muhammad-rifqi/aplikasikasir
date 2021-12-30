@@ -172,6 +172,15 @@ public function getdatawarung()
 }
 
 
+public function datawarung()
+{
+	
+	$sql = $this->db->query("select * from warung ")->result_array();
+	return $sql;
+
+}
+
+
 public function getproduk($limit,$start,$keyword)
 {
 	
@@ -199,6 +208,58 @@ public function getbarangmasuk($limit,$start,$keyword)
 public function total_barang_masuk()
 {
 	return $this->db->query("select * from barang_masuk order by id_produk DESC")->num_rows();
+}
+
+
+public function proses_tambah_barang_warung(){
+
+	$foto = str_replace(" ", "_", $_FILES['foto']['name']);
+	$url = base_url('assets/upload/foto/' . $foto);
+	if (!empty($foto)) {
+		$tujuan_file = realpath(APPPATH . '../assets/upload/foto/');
+		$konfigurasi = array(
+			'allowed_types' => 'jpg|jpeg|png|JPG|PNG',
+			'upload_path' => $tujuan_file,
+			'remove_spaces' => true,
+			'file_name' => $foto,
+		);
+
+		$this->load->library('upload', $konfigurasi);
+		$this->upload->do_upload('foto');
+		$this->upload->data();
+
+		$data = array(
+			'id_warung' => $this->input->post('nama_warung'),
+			'nama_produk' => $this->input->post('nama_produk'),
+			'harga' => $this->input->post('harga'),
+			'stok' => $this->input->post('stok') ,
+			'keterangan' => $this->input->post('keterangan'),
+			'foto' => $url,
+			'tanggal_update' => date('Y-m-d'),
+		);
+		$this->db->insert('barang_masuk', $data);
+
+	} else {
+
+	
+		$data = array(
+			'id_warung' => $this->input->post('nama_warung'),
+			'nama_produk' => $this->input->post('nama_produk'),
+			'harga' => $this->input->post('harga'),
+			'stok' => $this->input->post('stok') ,
+			'keterangan' => $this->input->post('keterangan'),
+			'tanggal_update' => date('Y-m-d'),
+		);
+		$this->db->insert('barang_masuk', $data);
+
+	}
+}
+
+
+public function hapus_barang_masuk($id)
+{
+  $this->db->where('id_barang_masuk',$id);
+  $this->db->delete('barang_masuk');
 }
 
 

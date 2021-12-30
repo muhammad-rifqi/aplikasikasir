@@ -278,6 +278,41 @@ class Auth extends CI_Controller {
         }
 
 
+        public function tambah_barang_masuk()
+        {
+            is_logged_in();  
+            $data['title'] = 'Tambah Barang Masuk';
+            $this->load->model('admin_model', 'warung');
+            $data['warung'] = $this->warung->datawarung();
+            $this->load->view('tamplates/header', $data);
+            $this->load->view('admin/tambah_barang_masuk', $data);
+            $this->load->view('tamplates/footer');
+        }
+
+
+
+        public function proses_tambah_barang_masuk()
+        {
+            is_logged_in();  
+            $this->load->model('Admin_model','barang_masuk');
+            $this->barang_masuk->proses_tambah_barang_warung();
+            $this->session->set_flashdata('message', '<div class="alert alert-success alert-dismissible show fade"><div class="alert-body"><button class="close" data-dismiss="alert"><span>×</span></button>Barang Masuk berhasil ditambahkan !</div></div>');
+            redirect('auth/barang_masuk');
+        }
+
+
+        public function  hapus_barang_masuk()
+        {
+            is_logged_in();  
+            $id = $this->uri->segment(3);
+            $this->load->model('Admin_model','barang_masuk');
+            $this->barang_masuk->hapus_barang_masuk($id);
+            $this->session->set_flashdata('message', '<div class="alert alert-success alert-dismissible show fade"><div class="alert-body"><button class="close" data-dismiss="alert"><span>×</span></button>Barang Masuk berhasil dihapus !</div></div>');
+            redirect('auth/barang_masuk');
+        }
+      
+
+
         public function barang_keluar()
         {
             is_logged_in();  
