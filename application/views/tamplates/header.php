@@ -55,19 +55,16 @@
           <div class="login-brand">
             <a href=""><img alt="image" src="<?= base_url('assets/'); ?>img/Lambang_Kabupaten_Takalar.png" width="35%"></a>
           </div>
-          <div class="sidebar-brand sidebar-brand-sm">
-            <a href="">St</a>
-          </div>
           <ul class="sidebar-menu">
               <li class="menu-header">Dashboard</li>
               <li class="<?= isset($dashboard_active)?$dashboard_active:''; ?>"><a class="nav-link" href="<?= base_url('auth/dashboard')?>"><i class="fas fa-fire"></i> <span>Dashboard</span></a></li>
           
               <li class="menu-header">Menu</li>
-              <li class="<?= isset($warung_active)?$warung_active:''; ?>"><a class="nav-link" href="<?= base_url('auth/warung')?>"><i class="fas fa-th-large"></i> <span>Warung</span></a></li>
-              <li class="<?= $this->uri->segment(2) == 'pajak' ? 'active' : '' ; ?>"><a class="nav-link" href="<?= base_url('auth/pajak')?>"><i class="fas fa-th-large"></i> <span>Pajak</span></a></li>
-              <li class="<?= $this->uri->segment(2) == 'barang_masuk'|| $this->uri->segment(2) == 'tambah_barang_masuk' ? 'active' : '' ; ?>"><a class="nav-link" href="<?= base_url('auth/barang_masuk')?>"><i class="fas fa-th-large"></i> <span>Barang Masuk</span></a></li>
-              <li class="<?= $this->uri->segment(2) == 'produk' ? 'active' : '' ; ?>"><a class="nav-link" href="<?= base_url('auth/produk')?>"><i class="fas fa-th-large"></i> <span>Produk</span></a></li>
-              <li class="<?= $this->uri->segment(2) == 'barang_keluar' ? 'active' : '' ; ?>"><a class="nav-link" href="<?= base_url('auth/barang_keluar')?>"><i class="fas fa-th-large"></i> <span>Barang Keluar</span></a></li>
+              <li class="<?= isset($warung_active)?$warung_active:''; ?>"><a class="nav-link" href="<?= base_url('auth/warung')?>"><i class="fas fa-store"></i></i> <span>Warung</span></a></li>
+              <li class="<?= $this->uri->segment(2) == 'pajak' ? 'active' : '' ; ?>"><a class="nav-link" href="<?= base_url('auth/pajak')?>"><i class="fas fa-chart-bar"></i> <span>Pajak</span></a></li>
+              <li class="<?= $this->uri->segment(2) == 'barang_masuk'|| $this->uri->segment(2) == 'tambah_barang_masuk' ? 'active' : '' ; ?>"><a class="nav-link" href="<?= base_url('auth/barang_masuk')?>"><i class="fas fa-download"></i></i> <span>Barang Masuk</span></a></li>
+              <li class="<?= $this->uri->segment(2) == 'produk' ? 'active' : '' ; ?>"><a class="nav-link" href="<?= base_url('auth/produk')?>"><i class="fas fa-shopping-cart"></i> <span>Produk</span></a></li>
+              <li class="<?= $this->uri->segment(2) == 'barang_keluar' ? 'active' : '' ; ?>"><a class="nav-link" href="<?= base_url('auth/barang_keluar')?>"><i class="fas fa-upload"></i> <span>Barang Keluar</span></a></li>
               <!-- <li class="nav-item dropdown">
                 <a href="#" class="nav-link has-dropdown" data-toggle="dropdown"><i class="fas fa-columns"></i> <span>Layout</span></a>
                 <ul class="dropdown-menu">

@@ -389,7 +389,14 @@ public function proses_hapus_barang_keluar($id){
 public function getpajak()
 {
 	$hari_ini = date("Y-m-d");
-	$sql = $this->db->query("select warung.id,warung.nama_warung,sum(barang_keluar.harga) as total_harga, count(barang_keluar.id_produk) as jumlah_barang,barang_keluar.id_barang_keluar from warung left join barang_keluar on warung.id = barang_keluar.id_warung where barang_keluar.tanggal_update = '".$hari_ini."' group by warung.id")->result_array();
+	$sql = $this->db->query("select warung.id
+							,warung.nama_warung
+							,sum(barang_keluar.harga) as total_harga
+							, count(barang_keluar.id_produk) as jumlah_barang
+							,barang_keluar.id_barang_keluar 
+							from 
+							warung 
+							left join barang_keluar on warung.id = barang_keluar.id_warung where barang_keluar.tanggal_update = '".$hari_ini."' group by warung.id")->result_array();
 	return $sql;
 }
 
