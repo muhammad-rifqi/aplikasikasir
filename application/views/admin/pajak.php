@@ -101,9 +101,9 @@
                                 <tr>
                                 <th scope="col">#</th>
                                 <th scope="col">Nama Warung</th>
-                                <th scope="col">Total Harga</th>
-                                <th scope="col">Total Barang</th>
-                                <th scope="col">Pajak Hari Ini</th>
+                                <th scope="col">Total Harga Penjualan</th>
+                                <th scope="col">Total Barang Terjual</th>
+                                <th scope="col">Pajak Per/Hari</th>
                                 </tr>
                             </thead>
                             <tbody>
@@ -116,9 +116,9 @@
                                 <tr>
                                 <th scope="row"><?= $no; ?></th>
                                 <td><?= $pajak[$i]['nama_warung']?></td>
-                                <td><?= $pajak[$i]['total_harga']?></td>
-                                <td><?= $pajak[$i]['jumlah_barang']?></td>
-                                <td><?= $hasil; ?></td>
+                                <td><?=number_format($pajak[$i]['total_harga'],0,"",".")?></td>
+                                <td><?=number_format($pajak[$i]['jumlah_barang'],0,"",".")?> </td>
+                                <td><?=number_format($hasil,0,"",".")?></td>
                                 </tr>
                                 <?php 
                                 $no++;
