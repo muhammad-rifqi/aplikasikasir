@@ -10,7 +10,7 @@
 
     $(data).each(function(i){         
         labels.push(data[i].nama_warung); 
-        data_pajak.push(data[i].total_pajak);
+        data_pajak.push(data[i].pajak_hari_ini);
     });  
 
    
