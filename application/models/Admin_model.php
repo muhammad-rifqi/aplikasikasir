@@ -181,6 +181,9 @@ public function datawarung()
 }
 
 
+//end warung
+
+
 public function getproduk($limit,$start,$keyword)
 {
 	
@@ -194,6 +197,10 @@ public function total_produk()
 {
 	return $this->db->query("select * from produk order by id_produk DESC")->num_rows();
 }
+
+
+
+//end produk
 
 
 public function getbarangmasuk($limit,$start,$keyword)
@@ -263,6 +270,16 @@ public function hapus_barang_masuk($id)
 }
 
 
+
+public function edit_barang_masuk($id)
+{
+	$sql = $this->db->query("select * from barang_masuk where id_barang_masuk = '".$id."'");
+	$data = $sql->result_array();
+	return $data;
+}
+
+
+//end baarang masuk
 
 public function getbarangkeluar($limit,$start,$keyword)
 {

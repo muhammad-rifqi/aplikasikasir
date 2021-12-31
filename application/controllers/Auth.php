@@ -313,6 +313,22 @@ class Auth extends CI_Controller {
       
 
 
+        
+        public function edit_barang_masuk()
+        {
+            is_logged_in();  
+            $id = $this->uri->segment(3);
+            $data['title'] = 'Edit Barang Masuk';
+            $this->load->model('admin_model', 'barang_masuk');
+            $data['warung'] = $this->barang_masuk->datawarung();
+            $data['bm'] = $this->barang_masuk->edit_barang_masuk($id);
+            $this->load->view('tamplates/header', $data);
+            $this->load->view('admin/edit_barang_masuk', $data);
+            $this->load->view('tamplates/footer');
+        }
+
+
+
         public function barang_keluar()
         {
             is_logged_in();  
