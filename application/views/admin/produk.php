@@ -58,16 +58,16 @@
                                             <?php 
                                             if($produk[$a]['stok'] > 0){
                                             ?>
-                                            <a href="<?= base_url('auth/hapus_produk/'.$produk[$a]['id_produk']); ?>"
+                                                <a href="#" onclick="update_harga(<?= $produk[$a]['id_produk'] ?>)"
+                                                    class="btn btn-success btn-sm">
+                                                    Exit Item
+                                                </a>
+                                            <?php }else{ ?>
+                                                <a href="<?= base_url('auth/hapus_produk/'.$produk[$a]['id_produk']); ?>"
                                                     onclick="return confirm('Yakin Mau Hapus data ini ??')"
                                                     class="hapus btn btn-danger btn-sm">
                                                     <i class="fas fa-trash"></i> Hapus
-                                                </a>
-                                                <a href="#" onclick="update_harga(<?= $produk[$a]['id_produk'] ?>)"
-                                                    class="btn btn-success btn-sm">
-                                                    <i class="fas fa-car"></i> Exit Item
-                                                </a>
-                                            <?php }else{ ?> 
+                                                </a> 
                                                 <a href="#"
                                                     class="btn btn-danger btn-sm">
                                                     Stok Habis
