@@ -368,7 +368,7 @@ public function insert_barang_keluar(){
 
 	$tgl = date("Y-m-d");
 	$ambil = $this->db->query("select * from produk where id_produk = '".$this->input->post('id_produk')."'")->result_array();
-	if($this->input->post('jumlah') > $ambil[0]['stok'] ){
+	if(empty($this->input->post('jumlah')) || $this->input->post('jumlah') > $ambil[0]['stok'] ){
 		$response = "failed , invalid amount ";
 	}else{
 		$this->db->query("insert into barang_keluar(id_warung,id_produk,nama_produk,harga,jumlah,keterangan,foto,tanggal_update)values('".$ambil[0]['id_warung']."','".$ambil[0]['kode_produk']."','".$ambil[0]['nama_produk']."','".$ambil[0]['harga']."','".$this->input->post('jumlah')."','".$ambil[0]['keterangan']."','".$ambil[0]['foto']."','".$tgl."')");
@@ -376,6 +376,13 @@ public function insert_barang_keluar(){
 		$response = "success";
 	}
 	echo $response;
+}
+
+public function proses_hapus_barang_keluar($id){
+
+	$this->db->where('id_barang_keluar',$id);
+	$this->db->delete('barang_keluar');
+
 }
 
 } 

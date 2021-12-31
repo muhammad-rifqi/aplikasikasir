@@ -53,7 +53,7 @@
                                             <td>#p<?=$produk[$a]['kode_produk']?></td>
                                             <td><img src="<?= $produk[$a]['foto']?>" class="img-fluid"></td>
                                             <td><?= $this->libs->ymdhis2dMonthy($produk[$a]['tanggal_update'])?></td>
-                                            <td><input type="text" id="jml" value="" size="1"></td>
+                                            <td><input type="text" id="jml" value="" size="1" required></td>
                                             <td>
                                             <?php 
                                             if($produk[$a]['stok'] > 0){
