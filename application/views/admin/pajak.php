@@ -3,8 +3,7 @@
 <script type="text/javascript" src="<?= base_url('assets/dist/Chart.min.js');?>"> </script>
 
 <script>
- $.getJSON("http://localhost/aplikasikasir/api-warung", function( data ) {
-
+ $.getJSON("<?= base_url();?>/api-warung", function( data ) {
    
     var labels =[];
     var data_pajak =[];
@@ -77,9 +76,10 @@
         <div class="section-body">
             <div class="row">
                 <div class="col-12 col-md-6 col-lg-12">
+                   
                     <div class="card">
                         <div class="card-header d-flex">
-                            <h4>List Pajak</h4>
+                            <h4>List Grafik Pajak</h4>
                         </div>
                         <div class="card-body">
                         <canvas id="pajakChart"></canvas>
@@ -88,6 +88,54 @@
                            Data Pajak Per/Hari
                         </div>
                     </div>
+
+                    <div class="card">
+                        <div class="card-header d-flex">
+                            <h4>List Table Pajak</h4>
+                        </div>
+                        <div class="card-body">
+
+                        <div class="table-responsive">
+                            <table class="table">
+                            <thead>
+                                <tr>
+                                <th scope="col">#</th>
+                                <th scope="col">Nama Warung</th>
+                                <th scope="col">Total Harga</th>
+                                <th scope="col">Total Barang</th>
+                                <th scope="col">Pajak Hari Ini</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <?php
+                                $jumlah = count($pajak);
+                                $no=1;
+                                for($i=0;$i<$jumlah;$i++){
+                                $hasil = (10/100) * $pajak[$i]['total_harga']; 
+                                ?>
+                                <tr>
+                                <th scope="row"><?= $no; ?></th>
+                                <td><?= $pajak[$i]['nama_warung']?></td>
+                                <td><?= $pajak[$i]['total_harga']?></td>
+                                <td><?= $pajak[$i]['jumlah_barang']?></td>
+                                <td><?= $hasil; ?></td>
+                                </tr>
+                                <?php 
+                                $no++;
+                                }
+                                ?>
+                            </tbody>
+                            </table>
+                        </div>
+
+
+                        </div>
+                        <div class="card-footer text-right">
+                           Data Pajak Per/Warung
+                        </div>
+                    </div>
+
+
                 </div>
             </div>
 

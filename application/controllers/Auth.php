@@ -167,6 +167,8 @@ class Auth extends CI_Controller {
         {
             is_logged_in();  
             $data['title'] = 'Pajak';
+            $this->load->model('Admin_model','pajak');
+            $data['pajak'] = $this->pajak->getpajak();
             $this->load->view('tamplates/header', $data);
             $this->load->view('admin/pajak', $data);
             $this->load->view('tamplates/footer');
