@@ -62,7 +62,7 @@ class Welcome extends CI_Controller {
 	{
 	 
 		$this->load->model('Admin_model','warung');
-		$array = $this->warung->getdatawarung();
+		$array = $this->warung->datawarung();
 		echo json_encode($array);
 	}
  
