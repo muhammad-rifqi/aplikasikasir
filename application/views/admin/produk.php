@@ -53,12 +53,12 @@
                                             <td>#p<?=$produk[$a]['kode_produk']?></td>
                                             <td><img src="<?= $produk[$a]['foto']?>" class="img-fluid"></td>
                                             <td><?= $this->libs->ymdhis2dMonthy($produk[$a]['tanggal_update'])?></td>
-                                            <td><input type="text" id="jml" value="" size="1" required></td>
+                                            <td><input type="text" id="jml<?=$a?>" value="" size="1" required></td>
                                             <td>
                                             <?php 
                                             if($produk[$a]['stok'] > 0){
                                             ?>
-                                                <a href="#" onclick="update_harga(<?= $produk[$a]['id_produk'] ?>)"
+                                                <a href="#" onclick="update_harga(<?= $produk[$a]['id_produk'] ?>,<?=$a?>)"
                                                     class="btn btn-success btn-sm">
                                                     Exit Item
                                                 </a>
@@ -104,10 +104,10 @@
 </div>
 
 <script>
-function update_harga(e){
+function update_harga(e,t){
     let hr = new XMLHttpRequest();
     let url = "<?= base_url('auth/update_harga')?>";
-    let jml = document.getElementById("jml").value;
+    let jml = document.getElementById("jml"+t).value;
     let id = e;
     let vars = "jumlah="+jml+"&id_produk="+id;
     hr.open("POST", url, true);
