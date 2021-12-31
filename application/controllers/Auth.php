@@ -338,7 +338,12 @@ class Auth extends CI_Controller {
             redirect('auth/barang_masuk');
         }
       
+        public function insert_to_produk(){
 
+            $this->load->model('admin_model', 'barang_masuk');
+            $this->barang_masuk->insert_to_produk();
+
+        }
 
         public function barang_keluar()
         {

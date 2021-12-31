@@ -31,7 +31,7 @@
                                         <th class="align-middle">Nama Produk</th>
                                         <th class="align-middle">Harga</th>
                                         <th class="align-middle">Stok</th>
-                                        <th class="align-middle">Keterangan</th>
+                                        <th class="align-middle">Kode Produk</th>
                                         <th class="align-middle">Foto</th>
                                         <th class="align-middle">Tanggal Produk</th>
                                         <th class="align-middle">#</th>
@@ -50,9 +50,8 @@
                                             <td><?= $produk[$a]['nama_produk'] ?></td>
                                             <td>Rp.&nbsp;<?=number_format($produk[$a]['harga'],0,"",".")?></td>
                                             <td>Rp.&nbsp;<?=number_format($produk[$a]['stok'],0,"",".")?></td>
-                                            <td><?=$produk[$a]['keterangan']?></td>
-                                            <td><img src="<?= $produk[$a]['foto']?>" class="img-fluid"
-                                                    width="30%"></td>
+                                            <td>#p<?=$produk[$a]['kode_produk']?></td>
+                                            <td><img src="<?= $produk[$a]['foto']?>" class="img-fluid"></td>
                                             <td><?= $this->libs->ymdhis2dMonthy($produk[$a]['tanggal_update'])?></td>
                                             <td><input type="text" id="jml" value="" size="1"></td>
                                             <td>
@@ -107,11 +106,21 @@ function update_harga(e){
     hr.onreadystatechange = function() {
 	    if(hr.readyState == 4 && hr.status == 200) {
 		    let return_data = hr.responseText;
-			alert(return_data);
-            return false;
+			swal({
+                title: "Send To Product Success!",
+                text: return_data,
+                icon: "success",
+            }).then(function() {
+                return false;
+            });
 	    }else{
-            alert(return_data);
-            return false;
+            swal({
+                title: "Send To Product Failed!",
+                text: 'Failed',
+                icon: "error",
+            }).then(function() {
+                return false;
+            });
         }
     }
     hr.send(vars); 

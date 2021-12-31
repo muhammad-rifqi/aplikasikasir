@@ -206,7 +206,7 @@ public function total_produk()
 public function getbarangmasuk($limit,$start,$keyword)
 {
 	
-	$sql = $this->db->query("select * from barang_masuk where nama_produk like '%".$keyword."%' limit ".$limit.", ".$start."");
+	$sql = $this->db->query("select * from barang_masuk where nama_produk like '%".$keyword."%' and status_produk = '1' limit ".$limit.", ".$start."");
 	return $sql;
 
 }
@@ -323,6 +323,27 @@ public function update_barang_warung(){
 		$this->db->update('barang_masuk', $data);
 
 	}
+}
+
+public function insert_to_produk(){
+	$ambil = $this->db->query("select * from barang_masuk where id_barang_masuk = '".$this->input->post('id_barang_masuk')."'")->result_array();
+	$cek = $this->db->query("select * from produk where kode_produk = '".$this->input->post('id_barang_masuk')."'")->result_array();
+	$tgl = date('Y-m-d');
+	$jml = count($cek);
+	if($jml > 0){
+		$sql = $this->db->query("update produk set  stok='".($ambil[0]['stok']+$cek[0]['stok'])."',tanggal_update='".$tgl."' where kode_produk='".$ambil[0]['id_barang_masuk']."'");
+	}else{
+		$sql = $this->db->query("insert into produk(id_warung,kode_produk,nama_produk,harga,stok,keterangan,foto,tanggal_update)values('".$ambil[0]['id_warung']."','".$ambil[0]['id_barang_masuk']."','".$ambil[0]['nama_produk']."','".$ambil[0]['harga']."','".$ambil[0]['stok']."','".$ambil[0]['keterangan']."','".$ambil[0]['foto']."','".$tgl."')");
+	}
+
+	if($sql == true){
+		$this->db->query("update barang_masuk set status_produk = '2' where id_barang_masuk='".$this->input->post('id_barang_masuk')."'");
+		$response = "success";
+		}else{
+		$response = "failed";
+		}
+		echo $response;
+
 }
 
 

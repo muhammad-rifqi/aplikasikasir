@@ -54,8 +54,8 @@
                                             <td>Rp.&nbsp;<?=number_format($barang_masuk[$a]['harga'],0,"",".")?></td>
                                             <td>Rp.&nbsp;<?=number_format($barang_masuk[$a]['stok'],0,"",".")?></td>
                                             <td><?=$barang_masuk[$a]['keterangan']?></td>
-                                            <td><img src="<?= $barang_masuk[$a]['foto']?>" class="img-fluid"
-                                                    width="30%"></td>
+                                            <td><img src="<?= $barang_masuk[$a]['foto']?>" class="img-fluid" width="100"
+                                                   ></td>
                                             <td><?= $this->libs->ymdhis2dMonthy($barang_masuk[$a]['tanggal_update'])?></td>
                                             <td>
                                                 <a href="<?= base_url('auth/hapus_barang_masuk/'.$barang_masuk[$a]['id_barang_masuk']); ?>"
@@ -67,6 +67,10 @@
                                                     class="btn btn-warning btn-sm">
                                                     <i class="fas fa-edit"></i> Edit
                                                 </a>
+                                                <button onclick="sendproduk(<?= $barang_masuk[$a]['id_barang_masuk']?>,<?= $barang_masuk[$a]['stok'] ?>)"
+                                                    class="btn btn-primary btn-sm">
+                                                    <i class="fas fa-exit"></i> Kirim Ke Produk
+                                                </button>
                                             </td>
                                         </tr>
                                         <?php
@@ -96,3 +100,39 @@
         </div>
     </section>
 </div>
+
+<script>
+function sendproduk(e,t){
+    let hr = new XMLHttpRequest();
+    let url = "<?= base_url('auth/insert_to_produk')?>";
+    let stok = t;
+    let id_barang_masuk = e;
+    let vars = "stok="+stok+"&id_barang_masuk="+id_barang_masuk;
+    hr.open("POST", url, true);
+    hr.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+    hr.onreadystatechange = function() {
+	    if(hr.readyState == 4 && hr.status == 200) {
+		    let return_data = hr.responseText;
+            console.log(return_data);
+			swal({
+                title: "Send To Product Success!",
+                text: return_data,
+                icon: "success",
+            }).then(function() {
+                window.location='<?=base_url('auth/barang_masuk');?>'
+            });
+
+	    }else{
+            swal({
+                title: "Send To Product Failed!",
+                text: 'Failed',
+                icon: "error",
+            }).then(function() {
+                return false;
+            });
+        }
+    }
+    hr.send(vars);
+   
+}
+</script>
