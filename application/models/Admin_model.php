@@ -237,6 +237,7 @@ public function proses_tambah_barang_warung(){
 			'keterangan' => $this->input->post('keterangan'),
 			'foto' => $url,
 			'tanggal_update' => date('Y-m-d'),
+			'status_produk' => 1,
 		);
 		$this->db->insert('barang_masuk', $data);
 
@@ -250,6 +251,7 @@ public function proses_tambah_barang_warung(){
 			'stok' => $this->input->post('stok') ,
 			'keterangan' => $this->input->post('keterangan'),
 			'tanggal_update' => date('Y-m-d'),
+			'status_produk' => 1,
 		);
 		$this->db->insert('barang_masuk', $data);
 
@@ -297,6 +299,7 @@ public function update_barang_warung(){
 			'keterangan' => $this->input->post('keterangan'),
 			'foto' => $url,
 			'tanggal_update' => date('Y-m-d'),
+			'status_produk' => 1,
 		);
 		$this->db->where('id_barang_masuk',$id);
 		$this->db->update('barang_masuk', $data);
@@ -311,6 +314,7 @@ public function update_barang_warung(){
 			'stok' => $this->input->post('stok') ,
 			'keterangan' => $this->input->post('keterangan'),
 			'tanggal_update' => date('Y-m-d'),
+			'status_produk' => 1,
 		);
 		$this->db->where('id_barang_masuk',$id);
 		$this->db->update('barang_masuk', $data);
