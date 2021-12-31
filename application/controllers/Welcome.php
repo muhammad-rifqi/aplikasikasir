@@ -69,6 +69,16 @@ class Welcome extends CI_Controller {
 
 
 
+	
+	public function api_pajak()
+	{
+		$this->load->model('Admin_model','pajak');
+		$array = $this->pajak->getdatawarung();
+		echo json_encode($array);
+	}
+ 
+
+
 	public function register()
 	{
 

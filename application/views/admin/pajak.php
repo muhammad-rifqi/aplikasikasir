@@ -3,7 +3,7 @@
 <script type="text/javascript" src="<?= base_url('assets/dist/Chart.min.js');?>"> </script>
 
 <script>
- $.getJSON("<?= base_url();?>/api-warung", function( data ) {
+ $.getJSON("<?= base_url();?>/api-pajak", function( data ) {
    
     var labels =[];
     var data_pajak =[];

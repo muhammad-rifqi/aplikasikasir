@@ -53,5 +53,6 @@ $route['default_controller'] = 'auth';
 $route['login'] = 'welcome/login';
 $route['register'] = 'welcome/register';
 $route['api-warung'] = 'welcome/api_warung';
+$route['api-pajak'] = 'welcome/api_pajak';
 $route['404_override'] = '';
 $route['translate_uri_dashes'] = FALSE;
