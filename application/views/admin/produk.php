@@ -51,7 +51,7 @@
                                             <td>Rp.&nbsp;<?=number_format($produk[$a]['harga'],0,"",".")?></td>
                                             <td>&nbsp;<?=number_format($produk[$a]['stok'],0,"",".")?></td>
                                             <td>#p<?=$produk[$a]['kode_produk']?></td>
-                                            <td><img src="<?= $produk[$a]['foto']?>" class="img-fluid"></td>
+                                            <td><img src="<?= $produk[$a]['foto']?>" class="img-fluid" width="100"></td>
                                             <td><?= $this->libs->ymdhis2dMonthy($produk[$a]['tanggal_update'])?></td>
                                             <td><input type="text" id="jml<?=$a?>" value="" size="1" required></td>
                                             <td>
