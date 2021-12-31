@@ -49,12 +49,15 @@
                                             <td><?=++$page?></td>
                                             <td><?= $produk[$a]['nama_produk'] ?></td>
                                             <td>Rp.&nbsp;<?=number_format($produk[$a]['harga'],0,"",".")?></td>
-                                            <td>Rp.&nbsp;<?=number_format($produk[$a]['stok'],0,"",".")?></td>
+                                            <td>&nbsp;<?=number_format($produk[$a]['stok'],0,"",".")?></td>
                                             <td>#p<?=$produk[$a]['kode_produk']?></td>
                                             <td><img src="<?= $produk[$a]['foto']?>" class="img-fluid"></td>
                                             <td><?= $this->libs->ymdhis2dMonthy($produk[$a]['tanggal_update'])?></td>
                                             <td><input type="text" id="jml" value="" size="1"></td>
                                             <td>
+                                            <?php 
+                                            if($produk[$a]['stok'] > 0){
+                                            ?>
                                             <a href="<?= base_url('auth/hapus_produk/'.$produk[$a]['id_produk']); ?>"
                                                     onclick="return confirm('Yakin Mau Hapus data ini ??')"
                                                     class="hapus btn btn-danger btn-sm">
@@ -64,6 +67,12 @@
                                                     class="btn btn-success btn-sm">
                                                     <i class="fas fa-car"></i> Exit Item
                                                 </a>
+                                            <?php }else{ ?> 
+                                                <a href="#"
+                                                    class="btn btn-danger btn-sm">
+                                                    Stok Habis
+                                                </a>
+                                            <?php } ?>
                                             </td>
                                         </tr>
                                         <?php
@@ -106,20 +115,32 @@ function update_harga(e){
     hr.onreadystatechange = function() {
 	    if(hr.readyState == 4 && hr.status == 200) {
 		    let return_data = hr.responseText;
-			swal({
-                title: "Send To Product Success!",
-                text: return_data,
-                icon: "success",
-            }).then(function() {
-                return false;
-            });
+            if(return_data == "success"){
+                swal({
+                    title: "Alert",
+                    text: return_data,
+                    icon: "success",
+                }).then(function() {
+                    window.location="<?= base_url('auth/produk')?>";
+                });
+            }else{
+                swal({
+                    title: "Alert",
+                    text: return_data,
+                    icon: "error",
+                }).then(function() {
+                    window.location="<?= base_url('auth/produk')?>";
+                });
+
+            }
+
 	    }else{
             swal({
-                title: "Send To Product Failed!",
+                title: hr.status,
                 text: 'Failed',
                 icon: "error",
             }).then(function() {
-                return false;
+                window.location="<?= base_url('auth/produk')?>";
             });
         }
     }
