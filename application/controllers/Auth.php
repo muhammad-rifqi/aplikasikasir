@@ -406,6 +406,17 @@ class Auth extends CI_Controller {
             redirect('auth/barang_keluar');   
         }
 
+
+        public function hapus_produk(){
+            is_logged_in();  
+            $id = $this->uri->segment(3);
+            $this->load->model('Admin_model','produk');
+            $this->produk->proses_hapus_produk($id);
+            $this->session->set_flashdata('message', '<div class="alert alert-success alert-dismissible show fade"><div class="alert-body"><button class="close" data-dismiss="alert"><span>×</span></button>Produk berhasil dihapus !</div></div>');
+            redirect('auth/produk');   
+        }
+
+
         public function logout()
         {
             $this->session->unset_userdata('email');

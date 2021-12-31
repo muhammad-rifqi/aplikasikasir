@@ -264,7 +264,6 @@ public function hapus_barang_masuk($id)
 }
 
 
-
 public function edit_barang_masuk($id)
 {
 	$sql = $this->db->query("select * from barang_masuk where id_barang_masuk = '".$id."'");
@@ -390,6 +389,13 @@ public function getpajak()
 	return $sql;
 }
 
+
+public function proses_hapus_produk($id){
+
+	$this->db->where('id_produk',$id);
+	$this->db->delete('produk');
+
+}
 
 //end pajak
 
