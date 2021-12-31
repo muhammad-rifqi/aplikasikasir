@@ -297,7 +297,7 @@ class Auth extends CI_Controller {
         {
             is_logged_in();  
             $this->load->model('Admin_model','barang_masuk');
-            $this->barang_masuk->proses_tambah_barang_warung();
+            $this->barang_masuk->proses_tambah_barang_masuk();
             $this->session->set_flashdata('message', '<div class="alert alert-success alert-dismissible show fade"><div class="alert-body"><button class="close" data-dismiss="alert"><span>×</span></button>Barang Masuk berhasil ditambahkan !</div></div>');
             redirect('auth/barang_masuk');
         }
@@ -335,7 +335,7 @@ class Auth extends CI_Controller {
         {
             is_logged_in();  
             $this->load->model('Admin_model','barang_masuk');
-            $this->barang_masuk->update_barang_warung();
+            $this->barang_masuk->update_barang_masuk();
             $this->session->set_flashdata('message', '<div class="alert alert-success alert-dismissible show fade"><div class="alert-body"><button class="close" data-dismiss="alert"><span>×</span></button>Barang Masuk berhasil diupdate !</div></div>');
             redirect('auth/barang_masuk');
         }

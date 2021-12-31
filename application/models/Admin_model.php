@@ -212,17 +212,17 @@ public function total_barang_masuk()
 }
 
 
-public function proses_tambah_barang_warung(){
+public function proses_tambah_barang_masuk(){
 
-	$foto = str_replace(" ", "_", $_FILES['foto']['name']);
-	$url = base_url('assets/upload/foto/' . $foto);
+	$foto = end(explode(".", $_FILES["foto"]["name"]));
+	$url = base_url('assets/upload/foto/' . time().'.'.$foto);
 	if (!empty($foto)) {
 		$tujuan_file = realpath(APPPATH . '../assets/upload/foto/');
 		$konfigurasi = array(
 			'allowed_types' => 'jpg|jpeg|png|JPG|PNG',
 			'upload_path' => $tujuan_file,
 			'remove_spaces' => true,
-			'file_name' => $foto,
+			'file_name' => time().'.'.$foto,
 		);
 
 		$this->load->library('upload', $konfigurasi);
@@ -273,7 +273,7 @@ public function edit_barang_masuk($id)
 	return $data;
 }
 
-public function update_barang_warung(){
+public function update_barang_masuk(){
 
 	$id = $this->input->post('id_barang_masuk');
 	$foto = str_replace(" ", "_", $_FILES['foto']['name']);
