@@ -278,6 +278,53 @@ public function edit_barang_masuk($id)
 	return $data;
 }
 
+public function update_barang_warung(){
+
+	$id = $this->input->post('id_barang_masuk');
+	$foto = str_replace(" ", "_", $_FILES['foto']['name']);
+	$url = base_url('assets/upload/foto/' . $foto);
+	if (!empty($foto)) {
+		$tujuan_file = realpath(APPPATH . '../assets/upload/foto/');
+		$konfigurasi = array(
+			'allowed_types' => 'jpg|jpeg|png|JPG|PNG',
+			'upload_path' => $tujuan_file,
+			'remove_spaces' => true,
+			'file_name' => $foto,
+		);
+
+		$this->load->library('upload', $konfigurasi);
+		$this->upload->do_upload('foto');
+		$this->upload->data();
+
+		$data = array(
+			'id_warung' => $this->input->post('nama_warung'),
+			'nama_produk' => $this->input->post('nama_produk'),
+			'harga' => $this->input->post('harga'),
+			'stok' => $this->input->post('stok') ,
+			'keterangan' => $this->input->post('keterangan'),
+			'foto' => $url,
+			'tanggal_update' => date('Y-m-d'),
+		);
+		$this->db->where('id_barang_masuk',$id);
+		$this->db->update('barang_masuk', $data);
+
+	} else {
+
+	
+		$data = array(
+			'id_warung' => $this->input->post('nama_warung'),
+			'nama_produk' => $this->input->post('nama_produk'),
+			'harga' => $this->input->post('harga'),
+			'stok' => $this->input->post('stok') ,
+			'keterangan' => $this->input->post('keterangan'),
+			'tanggal_update' => date('Y-m-d'),
+		);
+		$this->db->where('id_barang_masuk',$id);
+		$this->db->update('barang_masuk', $data);
+
+	}
+}
+
 
 //end baarang masuk
 

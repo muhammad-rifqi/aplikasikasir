@@ -9,7 +9,8 @@
             <div class="row">
             <div class="col-md-6 col-sm-12 col-lg-6 offset-lg-3">
                 <div class="card">
-                  <?=form_open_multipart('auth/proses_tambah_barang_masuk', 'class="needs-validation" novalidate=""') ?>
+                  <?=form_open_multipart('auth/proses_update_barang_masuk', 'class="needs-validation" novalidate=""') ?>
+                  <input type="hidden" name="id_barang_masuk" value="<?= $bm[0]['id_barang_masuk']?>">
                     <div class="card-header">
                       <h4>Form Barang Masuk</h4>
                     </div>
@@ -75,19 +76,16 @@
                       <div class="form-group">
                         <label for="foto">Foto</label>
                         <div class="custom-file">
-                            <input type="file" name="foto" class="custom-file-input" id="foto" required="">
+                            <input type="file" name="foto" class="custom-file-input" id="foto">
                             <label for="foto" class="custom-file-label">Masukan foto</label>
                             <br>
-                            <div class="invalid-feedback">
-                              foto harus diisi
-                           </div>
                         </div>
                       </div>
 
                     </div>
                     <div class="card-footer text-right">
                       <a href="<?= base_url('auth/barang_masuk'); ?>" class="btn btn-warning"><i class="fa fa-arrow-left" aria-hidden="true"></i> Kembali</a>
-                      <button class="btn btn-primary" type="submit">Tambah <i class="fa fa-plus" aria-hidden="true"></i></button>
+                      <button class="btn btn-primary" type="submit">Update <i class="fa fa-plus" aria-hidden="true"></i></button>
                     </div>
                   </form>
                 </div>
