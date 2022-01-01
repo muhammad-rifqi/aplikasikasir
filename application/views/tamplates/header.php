@@ -59,8 +59,8 @@
           <ul class="sidebar-menu">
               <li class="menu-header">Dashboard</li>
               <li class="<?= isset($dashboard_active)?$dashboard_active:''; ?>"><a class="nav-link" href="<?= base_url('auth/dashboard')?>"><i class="fas fa-fire"></i> <span>Dashboard</span></a></li>
-          
               <li class="menu-header">Menu</li>
+              <?php if($this->session->userdata('status') == 'admin'){?>
               <li class="<?= isset($warung_active)?$warung_active:''; ?>"><a class="nav-link" href="<?= base_url('auth/warung')?>"><i class="fas fa-store"></i></i> <span>Warung</span></a></li>
               <li class="<?= $this->uri->segment(2) == 'pajak' ? 'active' : '' ; ?>"><a class="nav-link" href="<?= base_url('auth/pajak')?>"><i class="fas fa-chart-bar"></i> <span>Pajak</span></a></li>
               <li class="<?= $this->uri->segment(2) == 'barang_masuk'|| $this->uri->segment(2) == 'tambah_barang_masuk' ? 'active' : '' ; ?>"><a class="nav-link" href="<?= base_url('auth/barang_masuk')?>"><i class="fas fa-download"></i></i> <span>Barang Masuk</span></a></li>
@@ -74,6 +74,11 @@
                   <li><a class="nav-link" href="layout-top-navigation.html">Top Navigation</a></li>
                 </ul>
               </li> -->
+              <?php }else {?>
+              <li class="<?= $this->uri->segment(2) == 'barang_masuk'|| $this->uri->segment(2) == 'tambah_barang_masuk' ? 'active' : '' ; ?>"><a class="nav-link" href="<?= base_url('auth/barang_masuk')?>"><i class="fas fa-download"></i></i> <span>Barang Masuk</span></a></li>
+              <li class="<?= $this->uri->segment(2) == 'produk' ? 'active' : '' ; ?>"><a class="nav-link" href="<?= base_url('auth/produk')?>"><i class="fas fa-shopping-cart"></i> <span>Produk</span></a></li>
+              <li class="<?= $this->uri->segment(2) == 'barang_keluar' ? 'active' : '' ; ?>"><a class="nav-link" href="<?= base_url('auth/barang_keluar')?>"><i class="fas fa-upload"></i> <span>Barang Keluar</span></a></li>
+              <?php } ?>
             </ul>
 
             </div>

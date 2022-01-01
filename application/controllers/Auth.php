@@ -37,7 +37,7 @@ class Auth extends CI_Controller {
                         'id_user' => $data['log'][0]['id_user'],
                         'email' => $data['log'][0]['email'],
                         'username' => $data['log'][0]['username'],
-                        'foto' => $data['log'][0]['foto'],
+                        'status' => $data['log'][0]['status'],
                     );
                     $this->session->set_userdata($newdata);
                     redirect(base_url() . 'auth/dashboard');
