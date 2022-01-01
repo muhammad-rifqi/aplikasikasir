@@ -224,6 +224,7 @@ class Auth extends CI_Controller {
             
         }
 
+
         public function update_harga(){
 
             $this->load->model('admin_model', 'update_barang');

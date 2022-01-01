@@ -68,6 +68,15 @@ class Welcome extends CI_Controller {
  
 
 
+	
+	public function api_produk($id)
+	{
+		$id = $this->uri->segment(2);
+		$this->load->model('Admin_model','produk');
+		$array = $this->produk->getdataproduk($id);
+		echo json_encode($array);
+	}
+ 
 
 	
 	public function api_pajak()

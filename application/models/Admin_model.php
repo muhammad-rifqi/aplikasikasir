@@ -194,6 +194,16 @@ public function total_produk()
 
 
 
+public function getdataproduk($id)
+{
+	
+	$sql = $this->db->query("select * from produk where id_warung = '".$id."'")->result_array();
+	return $sql;
+
+}
+
+
+
 //end produk
 
 
