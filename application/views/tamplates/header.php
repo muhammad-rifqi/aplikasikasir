@@ -30,7 +30,8 @@
         </div>
         <ul class="navbar-nav navbar-right">
           <li class="dropdown"><a href="#" data-toggle="dropdown" class="nav-link dropdown-toggle nav-link-lg nav-link-user">
-            <img alt="image" src="<?= base_url('assets/'); ?>img/avatar-1.png" class="rounded-circle mr-1">
+            <img alt="image" src="<?= base_url('assets/'); ?>img/default.png" class="rounded-circle mr-1">
+            <!-- <img alt="image" src="<?=base_url('assets/img/') . $this->session->userdata('foto');?>" class="rounded-circle mr-1"> -->
             <div class="d-sm-none d-lg-inline-block"><?=$this->session->userdata('username')?></div></a>
             <div class="dropdown-menu dropdown-menu-right">
               <a href="features-profile.html" class="dropdown-item has-icon">
