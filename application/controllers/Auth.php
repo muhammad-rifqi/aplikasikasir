@@ -164,6 +164,18 @@ class Auth extends CI_Controller {
         }
      
 
+        public function detail_warung(){
+
+            $id = $this->uri->segment(3);
+            $data['title'] = 'Detail Warung';
+            $this->load->model('Admin_model','warung');
+            $data['warung'] = $this->warung->getwarungdetail($id);
+            $this->load->view('tamplates/header', $data);
+            $this->load->view('admin/detailwarung', $data);
+            $this->load->view('tamplates/footer');
+            
+        }
+
         public function pajak()
         {
             is_logged_in();  

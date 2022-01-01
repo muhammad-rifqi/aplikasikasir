@@ -16,6 +16,15 @@ public function getwarung($limit,$start,$keyword)
 	return $sql;
 
 }
+
+
+public function getwarungdetail($id)
+{
+	
+	$sql = $this->db->query("select * from warung where id = '".$id."'")->result_array();
+	return $sql;
+
+}
 public function insert_warung(){
 
 	$foto = str_replace(" ", "_", $_FILES['foto']['name']);
