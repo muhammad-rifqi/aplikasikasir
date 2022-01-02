@@ -55,6 +55,11 @@ class Auth extends CI_Controller {
             $data = array();
             $data['title'] = 'Dashboard Aplikasi Kasir';
             $data['dashboard_active'] = 'active';
+            $this->load->model('Admin_model','warung');
+            $data['warung'] = $this->warung->total_warung();
+            $data['bm'] = $this->warung->total_barang_masuk();
+            $data['bk'] = $this->warung->total_barang_keluar();
+            $data['pajak'] = $this->warung->getpajak();
             $this->load->view('tamplates/header', $data);
             $this->load->view('admin/dashboard', $data);
             $this->load->view('tamplates/footer');

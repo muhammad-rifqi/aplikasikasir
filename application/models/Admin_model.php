@@ -249,7 +249,7 @@ public function getbarangmasuk($limit,$start,$keyword)
 
 public function total_barang_masuk()
 {
-	return $this->db->query("select * from barang_masuk order by id_produk DESC")->num_rows();
+	return $this->db->query("select * from barang_masuk order by id_barang_masuk DESC")->num_rows();
 }
 
 
@@ -398,7 +398,7 @@ public function getbarangkeluar($limit,$start,$keyword)
 
 public function total_barang_keluar()
 {
-	return $this->db->query("select * from barang_keluar order by id_produk DESC")->num_rows();
+	return $this->db->query("select * from barang_keluar order by id_barang_keluar DESC")->num_rows();
 }
 
 
