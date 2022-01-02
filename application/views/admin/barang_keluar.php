@@ -27,14 +27,14 @@
                             <div class="table-responsive">
                                 <table class="table table-bordered table-md">
                                     <tr class="bg-primary text-white text-center ">
-                                        <th class="align-middle">No</th>
-                                        <th class="align-middle">Nama Produk</th>
-                                        <th class="align-middle">Harga</th>
-                                        <th class="align-middle">Item</th>
-                                        <th class="align-middle">Keterangan</th>
-                                        <th class="align-middle">Foto</th>
-                                        <th class="align-middle">Tanggal Keluar</th>
-                                        <th class="align-middle">Aksi</th>
+                                        <th class="align-middle" width="2%">No</th>
+                                        <th class="align-middle" width="16%">Nama Produk</th>
+                                        <th class="align-middle" width="9%">Harga</th>
+                                        <th class="align-middle" width="9%">Item</th>
+                                        <th class="align-middle" width="20%">Keterangan</th>
+                                        <th class="align-middle" width="20%">Foto</th>
+                                        <th class="align-middle" width="10%">Tanggal Keluar</th>
+                                        <th class="align-middle" width="7%">Aksi</th>
                                     </tr>
                                     <?php if(count($barang_keluar)>0) : ?>
                                     <tbody >
@@ -47,12 +47,12 @@
                                         <tr >
                                             <td><?=++$page?></td>
                                             <td><?= $barang_keluar[$a]['nama_produk'] ?></td>
-                                            <td>Rp.&nbsp;<?=number_format($barang_keluar[$a]['harga'],0,"",".")?></td>
-                                            <td>&nbsp;<?=number_format($barang_keluar[$a]['jumlah'],0,"",".")?></td>
+                                            <td align="center">Rp.&nbsp;<?=number_format($barang_keluar[$a]['harga'],0,"",".")?></td>
+                                            <td align="center">&nbsp;<?=number_format($barang_keluar[$a]['jumlah'],0,"",".")?></td>
                                             <td><?=$barang_keluar[$a]['keterangan']?></td>
                                             <td><img src="<?= $barang_keluar[$a]['foto']?>" class="img-fluid"
-                                                    width="30%"></td>
-                                            <td><?= $this->libs->ymdhis2dMonthy($barang_keluar[$a]['tanggal_update'])?></td>
+                                                    width="100%"></td>
+                                            <td align="center"><?= $this->libs->ymdhis2dMonthy($barang_keluar[$a]['tanggal_update'])?></td>
                                             <td>
                                                 <a href="<?= base_url('auth/hapus_barang_keluar/'.$barang_keluar[$a]['id_barang_keluar']); ?>"
                                                     onclick="return confirm('Yakin Mau Hapus data ini ??')"
