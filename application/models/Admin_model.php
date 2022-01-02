@@ -44,8 +44,8 @@ public function insert_warung(){
 
 		$data = array(
 			'nama_warung' => $this->input->post('nama_warung'),
-			'pajak_perhari' => $this->input->post('pajak_perhari'),
-			'total_terjual' => $this->input->post('total_terjual'),
+			//'pajak_perhari' => $this->input->post('pajak_perhari'),
+			//'total_terjual' => $this->input->post('total_terjual'),
 			'tanggal' => $this->input->post('tanggal') ,
 			'keterangan' => $this->input->post('keterangan'),
 			'alamat' => $this->input->post('alamat'),
@@ -53,23 +53,44 @@ public function insert_warung(){
 			'foto' => $url,
 			'modify' => date('Y-m-d'),
 		);
-		$this->db->insert('warung', $data);
+		$query = $this->db->insert('warung', $data);
+		if($query){
+			$email = strtolower(str_replace(" ","",$this->input->post('nama_warung'))).'@localhost';
+			$d = array(
+				'username' => $this->input->post('nama_warung'),
+				'email' => $email,
+				'password' => md5('12345')
+			);
+
+			return $this->db->insert('user', $d);
+		}
+
 
 	} else {
 
 	
 		$data = array(
 			'nama_warung' => $this->input->post('nama_warung'),
-			'pajak_perhari' => $this->input->post('pajak_perhari'),
-			'total_terjual' => $this->input->post('total_terjual'),
+			//'pajak_perhari' => $this->input->post('pajak_perhari'),
+			//'total_terjual' => $this->input->post('total_terjual'),
 			'tanggal' => $this->input->post('tanggal') ,
 			'keterangan' => $this->input->post('keterangan'),
 			'alamat' => $this->input->post('alamat'),
 			'kontak' => $this->input->post('kontak'),
 			'modify' => date('Y-m-d'),
 		);
-		$this->db->insert('warung', $data);
+		$query = $this->db->insert('warung', $data);
 
+		if($query){
+			$email = strtolower(str_replace(" ","",$this->input->post('nama_warung'))).'@localhost';
+			$d = array(
+				'username' => $this->input->post('nama_warung'),
+				'email' => $email,
+				'password' => md5('12345')
+			);
+
+			return $this->db->insert('user', $d);
+		}
 	}
 
 
@@ -154,7 +175,7 @@ public function getdatawarung()
 {
 
 	$hari_ini = date("Y-m-d");
-	$sql = $this->db->query("select warung.id as id, warung.nama_warung as nama_warung,sum(barang_keluar.harga) as total_harga, count(barang_keluar.id_produk) as jumlah_barang,barang_keluar.tanggal_update as tanggal , barang_keluar.id_barang_keluar from warung left join barang_keluar on warung.id = barang_keluar.id_warung where barang_keluar.tanggal_update = '".$hari_ini."' group by warung.id")->result_array();
+	$sql = $this->db->query("select warung.id as id, warung.nama_warung as nama_warung,sum(barang_keluar.harga) as total_harga, count(barang_keluar.id_produk) as jumlah_barang, sum(barang_keluar.jumlah) as item,barang_keluar.tanggal_update as tanggal , barang_keluar.id_barang_keluar from warung left join barang_keluar on warung.id = barang_keluar.id_warung where barang_keluar.tanggal_update = '".$hari_ini."' group by warung.id")->result_array();
 	$jumlah = count($sql);
 	if($jumlah > 0){
 	for($i=0;$i<$jumlah;$i++){
@@ -164,6 +185,7 @@ public function getdatawarung()
 			"nama_warung"=> $sql[$i]['nama_warung'],
 			"pajak_hari_ini"=> $pajak,
 			"total_terjual"=> $sql[$i]['jumlah_barang'],
+			"items"=>$sql[$i]['item'],
 			"tanggal"=> $sql[$i]['tanggal'],
 		);
 
@@ -413,7 +435,8 @@ public function getpajak()
 							,warung.nama_warung
 							,sum(barang_keluar.harga) AS total_harga
 							, count(barang_keluar.id_produk) AS jumlah_barang
-							,barang_keluar.id_barang_keluar 
+							,barang_keluar.id_barang_keluar
+							,sum(barang_keluar.jumlah) as item 
 							FROM 
 							warung 
 							LEFT JOIN barang_keluar ON warung.id = barang_keluar.id_warung WHERE barang_keluar.tanggal_update = '".$hari_ini."' group by warung.id")->result_array();

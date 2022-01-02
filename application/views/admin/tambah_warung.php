@@ -21,7 +21,7 @@
                           Nama Warung harus di isi
                         </div>
                       </div>
-                      <div class="form-group">
+                      <!-- <div class="form-group">
                         <label for="pajak_perhari">Pajak Perhari</label>
                         <input id="pajak_perhari" name="pajak_perhari" class="form-control money" type="number" value="0" required="">
                         <div class="invalid-feedback">
@@ -34,9 +34,9 @@
                         <div class="invalid-feedback">
                             Total Terjual harus di isi
                         </div>
-                      </div>
+                      </div> -->
                       <div class="form-group">
-                        <label for="tanggal">Tanggal</label>
+                        <label for="tanggal">Tanggal Daftar</label>
                         <input id="tanggal" name="tanggal" type="date" class="form-control" required="">
                         <div class="invalid-feedback">
                           Tanggal harus di isi
