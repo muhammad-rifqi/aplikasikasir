@@ -21,7 +21,7 @@ public function getwarung($limit,$start,$keyword)
 public function getwarungdetail($id)
 {
 	
-	$sql = $this->db->query("select * from warung where id = '".$id."'")->result_array();
+	$sql = $this->db->query("SELECT * from warung where id = '".$id."'")->result_array();
 	return $sql;
 
 }
@@ -390,7 +390,7 @@ public function insert_to_produk(){
 public function getbarangkeluar($limit,$start,$keyword)
 {
 	
-	$sql = $this->db->query("select * from barang_keluar where nama_produk like '%".$keyword."%' limit ".$limit.", ".$start."");
+	$sql = $this->db->query("SELECT * from barang_keluar where nama_produk like '%".$keyword."%' limit ".$limit.", ".$start."");
 	return $sql;
 
 }

@@ -31,15 +31,15 @@
                             <div class="table-responsive">
                                 <table class="table table-bordered table-md">
                                     <tr class="bg-primary text-white text-center ">
-                                        <th class="align-middle">No</th>
+                                        <th class="align-middle" width="2%">No</th>
                                         <th class="align-middle" width="15%">Nama Warung</th>
                                         <!-- <th class="align-middle">Pajak Perhari</th>
                                         <th class="align-middle">Total Terjual</th> -->
-                                        <th class="align-middle">Tanggal Terdaftar</th>
-                                        <th class="align-middle">Keterangan</th>
-                                        <th class="align-middle">Foto</th>
-                                        <th class="align-middle">Pajak 10%</th>
-                                        <th class="align-middle" width="13%">Aksi</th>
+                                        <th class="align-middle" width="10%">Tanggal Terdaftar</th>
+                                        <th class="align-middle" width="20%">Keterangan</th>
+                                        <th class="align-middle" width="20%">Foto</th>
+                                        <th class="align-middle" width="10%">Pajak 10%</th>
+                                        <th class="align-middle" width="14%">Aksi</th>
                                     </tr>
                                     <?php if(count($warung)>0) : ?>
                                     <tbody >
@@ -55,12 +55,12 @@
                                             <td><?= $warung[$a]['nama_warung'] ?></td>
                                             <!-- <td>Rp.&nbsp;<?//=number_format($warung[$a]['pajak_perhari'],0,"",".")?></td>
                                             <td>Rp.&nbsp;<?//=number_format($warung[$a]['total_terjual'],0,"",".")?></td> -->
-                                            <td><?= $this->libs->ymdhis2dMonthy($warung[$a]['tanggal'])?></td>
+                                            <td align="center"><?= $this->libs->ymdhis2dMonthy($warung[$a]['tanggal'])?></td>
                                             <td><?=$warung[$a]['keterangan']?></td>
                                             <td><img src="<?= $warung[$a]['foto']?>" class="img-fluid"
-                                                    width="100"></td>
+                                                    width="100%"></td>
                                             
-                                            <td>Rp.&nbsp;<?= number_format($pajak,0,"",".") ?></td>
+                                            <td align="center">Rp.&nbsp;<?= number_format($pajak,0,"",".") ?></td>
                                             <td>
                                                 <a href="<?= base_url('auth/hapus_warung/'.$warung[$a]['id']); ?>"
                                                     onclick="return confirm('Yakin Mau Hapus data ini ??')"

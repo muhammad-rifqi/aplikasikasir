@@ -31,14 +31,14 @@
                             <div class="table-responsive">
                                 <table class="table table-bordered table-md">
                                     <tr class="bg-primary text-white text-center ">
-                                        <th class="align-middle">No</th>
-                                        <th class="align-middle">Nama Produk</th>
-                                        <th class="align-middle">Harga</th>
-                                        <th class="align-middle">Stok</th>
-                                        <th class="align-middle">Keterangan</th>
-                                        <th class="align-middle">Foto</th>
-                                        <th class="align-middle">Tanggal Masuk</th>
-                                        <th class="align-middle">Aksi</th>
+                                        <th class="align-middle" width="2%">No</th>
+                                        <th class="align-middle" width="10%">Nama Produk</th>
+                                        <th class="align-middle" width="9%">Harga</th>
+                                        <th class="align-middle" width="7%">Stok</th>
+                                        <th class="align-middle" width="12%">Keterangan</th>
+                                        <th class="align-middle" width="15%">Foto</th>
+                                        <th class="align-middle" width="8%">Tanggal Masuk</th>
+                                        <th class="align-middle" width="15%">Aksi</th>
                                     </tr>
                                     <?php if(count($barang_masuk)>0) : ?>
                                     <tbody >
@@ -51,13 +51,13 @@
                                         <tr >
                                             <td><?=++$page?></td>
                                             <td><?= $barang_masuk[$a]['nama_produk'] ?></td>
-                                            <td>Rp.&nbsp;<?=number_format($barang_masuk[$a]['harga'],0,"",".")?></td>
-                                            <td>Rp.&nbsp;<?=number_format($barang_masuk[$a]['stok'],0,"",".")?></td>
+                                            <td align="center">Rp.&nbsp;<?=number_format($barang_masuk[$a]['harga'],0,"",".")?></td>
+                                            <td align="center"><?= $barang_masuk[$a]['stok']?></td>
                                             <td><?=$barang_masuk[$a]['keterangan']?></td>
-                                            <td><img src="<?= $barang_masuk[$a]['foto']?>" class="img-fluid" width="100"
+                                            <td><img src="<?= $barang_masuk[$a]['foto']?>" class="img-fluid" width="100%"
                                                    ></td>
-                                            <td><?= $this->libs->ymdhis2dMonthy($barang_masuk[$a]['tanggal_update'])?></td>
-                                            <td>
+                                            <td align="center"><?= $this->libs->ymdhis2dMonthy($barang_masuk[$a]['tanggal_update'])?></td>
+                                            <td align="center">
                                                 <a href="<?= base_url('auth/hapus_barang_masuk/'.$barang_masuk[$a]['id_barang_masuk']); ?>"
                                                     onclick="return confirm('Yakin Mau Hapus data ini ??')"
                                                     class="hapus btn btn-danger btn-sm">
@@ -69,7 +69,7 @@
                                                 </a>
                                                 <button onclick="sendproduk(<?= $barang_masuk[$a]['id_barang_masuk']?>,<?= $barang_masuk[$a]['stok'] ?>)"
                                                     class="btn btn-primary btn-sm">
-                                                    <i class="fas fa-exit"></i> Kirim Ke Produk
+                                                    <i class="fas fa-paper-plane"></i> Kirim Ke Produk
                                                 </button>
                                             </td>
                                         </tr>
