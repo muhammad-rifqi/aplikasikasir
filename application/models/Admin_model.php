@@ -44,8 +44,8 @@ public function insert_warung(){
 
 		$data = array(
 			'nama_warung' => $this->input->post('nama_warung'),
-			'pajak_perhari' => $this->input->post('pajak_perhari'),
-			'total_terjual' => $this->input->post('total_terjual'),
+			//'pajak_perhari' => $this->input->post('pajak_perhari'),
+			//'total_terjual' => $this->input->post('total_terjual'),
 			'tanggal' => $this->input->post('tanggal') ,
 			'keterangan' => $this->input->post('keterangan'),
 			'alamat' => $this->input->post('alamat'),
@@ -53,23 +53,44 @@ public function insert_warung(){
 			'foto' => $url,
 			'modify' => date('Y-m-d'),
 		);
-		$this->db->insert('warung', $data);
+		$query = $this->db->insert('warung', $data);
+		if($query){
+
+			$d = array(
+				'username' => $this->input->post('nama_warung'),
+				'email' => strtolower(str_replace(" ","",$this->input->post('nama_warung'))),
+				'password' => md5('12345')
+			);
+
+			return $this->db->insert('user', $d);
+		}
+
 
 	} else {
 
 	
 		$data = array(
 			'nama_warung' => $this->input->post('nama_warung'),
-			'pajak_perhari' => $this->input->post('pajak_perhari'),
-			'total_terjual' => $this->input->post('total_terjual'),
+			//'pajak_perhari' => $this->input->post('pajak_perhari'),
+			//'total_terjual' => $this->input->post('total_terjual'),
 			'tanggal' => $this->input->post('tanggal') ,
 			'keterangan' => $this->input->post('keterangan'),
 			'alamat' => $this->input->post('alamat'),
 			'kontak' => $this->input->post('kontak'),
 			'modify' => date('Y-m-d'),
 		);
-		$this->db->insert('warung', $data);
+		$query = $this->db->insert('warung', $data);
 
+		if($query){
+
+			$d = array(
+				'username' => $this->input->post('nama_warung'),
+				'email' => strtolower(str_replace(" ","",$this->input->post('nama_warung'))),
+				'password' => md5('12345')
+			);
+
+			return $this->db->insert('user', $d);
+		}
 	}
 
 
