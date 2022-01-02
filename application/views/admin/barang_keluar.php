@@ -48,7 +48,7 @@
                                             <td><?=++$page?></td>
                                             <td><?= $barang_keluar[$a]['nama_produk'] ?></td>
                                             <td>Rp.&nbsp;<?=number_format($barang_keluar[$a]['harga'],0,"",".")?></td>
-                                            <td>Rp.&nbsp;<?=number_format($barang_keluar[$a]['jumlah'],0,"",".")?></td>
+                                            <td>&nbsp;<?=number_format($barang_keluar[$a]['jumlah'],0,"",".")?></td>
                                             <td><?=$barang_keluar[$a]['keterangan']?></td>
                                             <td><img src="<?= $barang_keluar[$a]['foto']?>" class="img-fluid"
                                                     width="30%"></td>
