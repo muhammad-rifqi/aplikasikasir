@@ -11,62 +11,60 @@
 
     <title>Access Block</title>
 
+  
+    <link rel="icon" type="image/x-icon" href="<?= base_url('assets/'); ?>img/Lambang_Kabupaten_Takalar.png">
     <!-- Custom fonts for this template-->
+    <link rel="stylesheet" href="<?= base_url('assets/'); ?>vendor/bootstrap/css/bootstrap.min.css" type="text/css">
     <link href="<?= base_url('assets/'); ?>vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
-    <link
-        href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i"
-        rel="stylesheet">
-
-    <!-- Custom styles for this template-->
-    <link href="<?= base_url('assets/'); ?>css/sb-admin-2.min.css" rel="stylesheet">
+   
+    <link rel="stylesheet" href="<?= base_url('assets/'); ?>css/style.css">
+    <link rel="stylesheet" href="<?= base_url('assets/'); ?>css/components.css">
 
 </head>
 
-<body id="page-top">
-
-    <!-- Page Wrapper -->
-    <div id="wrapper">
+<body>
 
 
-        <!-- Begin Page Content -->
-        <div class="container-fluid mt-5">
-
-            <!-- 404 Error Text -->
-            <div class="text-center">
-                <div class="error mx-auto" data-text="403">403</div>
-                <p class="lead text-gray-800 mb-5">Access Forbidden</p>
-                <p class="text-gray-500 mb-0">It looks like you found a glitch in the matrix...</p>
-                <a href="<?= base_url('user')?>">&larr; Back to Dashboard</a>
+            <div id="app">
+    <section class="section">
+      <div class="container mt-5">
+        <div class="page-error">
+          <div class="page-inner">
+            <h1>403</h1>
+            <div class="page-description">
+            	You do not have access to this page.
             </div>
-
+            <div class="page-search">
+              <div class="mt-3">
+              <a href="<?= base_url('auth/dashboard')?>">&larr; Back to Dashboard</a>
+              </div>
+            </div>
+          </div>
         </div>
-        <!-- /.container-fluid -->
-
-    </div>
-
-
-    </div>
-    <!-- End of Content Wrapper -->
-
-    </div>
-    <!-- End of Page Wrapper -->
-
-    <!-- Scroll to Top Button-->
-    <a class="scroll-to-top rounded" href="#page-top">
-        <i class="fas fa-angle-up"></i>
-    </a>
+        <div class="simple-footer mt-5">
+        Copyright &copy; <?= date('Y')?> <div class="bullet"></div> Aplikasi Kasir
+        </div>
+      </div>
+    </section>
+  </div>
 
 
+  <script src="<?= base_url('assets/'); ?>js/jquery-3.3.1.min.js"></script>
+ <script src="<?= base_url('assets/'); ?>js/popper.min.js"></script>
+ <script src="<?= base_url('assets/'); ?>vendor/bootstrap/js/bootstrap.min.js"></script>
 
-    <!-- Bootstrap core JavaScript-->
-    <script src="<?= base_url('assets/'); ?>vendor/jquery/jquery.min.js"></script>
-    <script src="<?= base_url('assets/'); ?>vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+ 
+ <script src="<?= base_url('assets/'); ?>js/jquery.nicescroll.min.js"></script>
 
-    <!-- Core plugin JavaScript-->
-    <script src="<?= base_url('assets/'); ?>vendor/jquery-easing/jquery.easing.min.js"></script>
+ <!-- Custom scripts for all pages-->
+ <script src="<?= base_url('assets/'); ?>js/moment.min.js"></script>
+ <script src="<?= base_url('assets/'); ?>js/stisla.js"></script>
+ 
+ 
 
-    <!-- Custom scripts for all pages-->
-    <script src="<?= base_url('assets/'); ?>js/sb-admin-2.min.js"></script>
+
+ <script src="<?= base_url('assets/'); ?>js/scripts.js"></script>
+ <script src="<?= base_url('assets/'); ?>js/custom.js"></script>
 
 </body>
 

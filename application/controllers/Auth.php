@@ -63,6 +63,9 @@ class Auth extends CI_Controller {
         public function warung()
         {
             is_logged_in();  
+            if($this->session->userdata('status') != 'admin'){
+                redirect('auth/blocked');
+            }
             $data = array();
             $data['title'] = 'Data Warung';
             $data['warung_active'] = 'active';
@@ -117,6 +120,9 @@ class Auth extends CI_Controller {
         public function tambah_warung()
         {
             is_logged_in();  
+            if($this->session->userdata('status') != 'admin'){
+                redirect('auth/blocked');
+            }
             $data['title'] = 'Tambah Warung';
             $data['warung_active'] = 'active';
             $this->load->view('tamplates/header', $data);
@@ -127,6 +133,9 @@ class Auth extends CI_Controller {
         public function proses_add_warung() {
 
             is_logged_in(); 
+            if($this->session->userdata('status') != 'admin'){
+                redirect('auth/blocked');
+            }
             $this->load->model('Admin_model','warung');
             $this->warung->insert_warung();
             $this->session->set_flashdata('message', '<div class="alert alert-success alert-dismissible show fade"><div class="alert-body"><button class="close" data-dismiss="alert"><span>×</span></button>Warung berhasil ditambahkan !</div></div>');
@@ -137,6 +146,9 @@ class Auth extends CI_Controller {
         public function edit_warung($id)
         {
             is_logged_in();  
+            if($this->session->userdata('status') != 'admin'){
+                redirect('auth/blocked');
+            }
             $data['warung_active'] = 'active';
             $this->load->model('admin_model', 'warung');
             $data['warung'] = $this->warung->edit_warung($id);
@@ -147,6 +159,9 @@ class Auth extends CI_Controller {
         }
 
         public function proses_ubah_warung() {
+            if($this->session->userdata('status') != 'admin'){
+                redirect('auth/blocked');
+            }
             $this->load->model('Admin_model','warung');
             $this->warung->ubah_warung();
             $this->session->set_flashdata('message', '<div class="alert alert-success alert-dismissible show fade"><div class="alert-body"><button class="close" data-dismiss="alert"><span>×</span></button>Warung berhasil diubah !</div></div>');
@@ -156,6 +171,9 @@ class Auth extends CI_Controller {
         public function hapus_warung($id)
         {
             is_logged_in();
+            if($this->session->userdata('status') != 'admin'){
+                redirect('auth/blocked');
+            }
             $id = $this->uri->segment(3);
             $this->load->model('Admin_model','warung');
             $this->warung->hapus_warung($id);
@@ -167,6 +185,9 @@ class Auth extends CI_Controller {
         public function detail_warung(){
 
             $id = $this->uri->segment(3);
+            if($this->session->userdata('status') != 'admin'){
+                redirect('auth/blocked');
+            }
             $data['title'] = 'Detail Warung';
             $this->load->model('Admin_model','warung');
             $data['warung'] = $this->warung->getwarungdetail($id);
@@ -178,7 +199,10 @@ class Auth extends CI_Controller {
 
         public function pajak()
         {
-            is_logged_in();  
+            is_logged_in(); 
+            if($this->session->userdata('status') != 'admin'){
+                redirect('auth/blocked');
+            } 
             $data['title'] = 'Pajak';
             $this->load->model('Admin_model','pajak');
             $data['pajak'] = $this->pajak->getpajak();
@@ -438,6 +462,10 @@ class Auth extends CI_Controller {
             $this->session->set_flashdata('message', '<div class="alert alert-success alert-dismissible show fade"><div class="alert-body"><button class="close" data-dismiss="alert"><span>×</span></button>Anda Berhasil Logout !</div></div>');
                 redirect('auth');
         }
+
+        public function blocked(){
+            $this->load->view('auth/blocked');
+        } 
 
 
 }

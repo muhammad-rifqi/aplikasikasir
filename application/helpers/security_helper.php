@@ -2,6 +2,8 @@
 
 function is_logged_in()
 {
+
+    
     //untuk memanggil perintah ci di helper php dengan instance 
     $ci = get_instance();
     if(!$ci->session->userdata('email')){
