@@ -95,17 +95,17 @@
                         </div>
                         <div class="card-body">
 
-                        <div class="table-responsive">
-                            <table class="table">
-                            <thead>
-                                <tr>
-                                <th scope="col">#</th>
-                                <th scope="col">Nama Warung</th>
-                                <th scope="col">Total Harga Penjualan</th>
-                                <th scope="col">Total Barang Terjual + item</th>
-                                <th scope="col">Pajak Per/Hari</th>
+                        <div class="table-responsive ">
+                            <table class="table table-bordered table-md ">
+                            
+                                <tr  class="bg-primary text-white text-center">
+                                <th class="align-middle" width="2%">No</th>
+                                <th class="align-middle" width="10%">Nama Warung</th>
+                                <th class="align-middle" width="10%">Total Harga Penjualan</th>
+                                <th class="align-middle" width="15%">Total Barang Terjual + item</th>
+                                <th class="align-middle" width="10%">Pajak Per/Hari</th>
                                 </tr>
-                            </thead>
+                           
                             <tbody>
                                 <?php
                                 $jumlah = count($pajak);
@@ -114,11 +114,11 @@
                                 $hasil = (10/100) * $pajak[$i]['total_harga']; 
                                 ?>
                                 <tr>
-                                <th scope="row"><?= $no; ?></th>
+                                <td align="center"><?= $no; ?></td>
                                 <td><?= $pajak[$i]['nama_warung']?></td>
-                                <td><?=number_format($pajak[$i]['total_harga'],0,"",".")?></td>
-                                <td><?=number_format($pajak[$i]['jumlah_barang'],0,"",".")?> barang dengan item (<?=number_format($pajak[$i]['item'],0,"",".")?>) </td>
-                                <td><?=number_format($hasil,0,"",".")?></td>
+                                <td align="center">Rp.&nbsp;<?=number_format($pajak[$i]['total_harga'],0,"",".")?></td>
+                                <td align="center"><?=$pajak[$i]['jumlah_barang']?> barang dengan item (<?=$pajak[$i]['item']?>) </td>
+                                <td align="center">Rp.&nbsp;<?=number_format($hasil,0,"",".")?></td>
                                 </tr>
                                 <?php 
                                 $no++;
