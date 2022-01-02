@@ -31,6 +31,7 @@
                                         <th class="align-middle" width="16%">Nama Produk</th>
                                         <th class="align-middle" width="9%">Harga</th>
                                         <th class="align-middle" width="9%">Item</th>
+                                        <th class="align-middle" width="9%">#</th>
                                         <th class="align-middle" width="20%">Keterangan</th>
                                         <th class="align-middle" width="20%">Foto</th>
                                         <th class="align-middle" width="10%">Tanggal Keluar</th>
@@ -39,9 +40,10 @@
                                     <?php if(count($barang_keluar)>0) : ?>
                                     <tbody >
                                         <?php
-                         
+                            $total=0;
                             $jumlah = count($barang_keluar);
 				            for($a=0;$a<$jumlah;$a++){
+                                $total +=($barang_keluar[$a]['harga'] * $barang_keluar[$a]['jumlah']);
 		                ?>
 
                                         <tr >
@@ -49,6 +51,7 @@
                                             <td><?= $barang_keluar[$a]['nama_produk'] ?></td>
                                             <td align="center">Rp.&nbsp;<?=number_format($barang_keluar[$a]['harga'],0,"",".")?></td>
                                             <td align="center"><?= $barang_keluar[$a]['jumlah']?></td>
+                                            <td align="center">Rp.<?= number_format(($barang_keluar[$a]['harga'] * $barang_keluar[$a]['jumlah']),0,"",".")?></td>
                                             <td><?=$barang_keluar[$a]['keterangan']?></td>
                                             <td><img src="<?= $barang_keluar[$a]['foto']?>" class="img-fluid"
                                                     width="100%"></td>
@@ -76,6 +79,7 @@
                                     </tfoot>
                                     <?php endif;?>
                                 </table>
+                                <p align="right"><b> Total Harga Semua Barang : <?= 'Rp. '.number_format($total,0,"","."); ?></b></p>
                             </div>
                         </div>
                         <div class="card-footer text-right">

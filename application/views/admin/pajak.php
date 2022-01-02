@@ -111,12 +111,12 @@
                                 $jumlah = count($pajak);
                                 $no=1;
                                 for($i=0;$i<$jumlah;$i++){
-                                $hasil = (10/100) * $pajak[$i]['total_harga']; 
+                                $hasil = (10/100) * ($pajak[$i]['total_harga']/$pajak[$i]['jumlah_barang']); 
                                 ?>
                                 <tr>
                                 <td align="center"><?= $no; ?></td>
                                 <td><?= $pajak[$i]['nama_warung']?></td>
-                                <td align="center">Rp.&nbsp;<?=number_format($pajak[$i]['total_harga'],0,"",".")?></td>
+                                <td align="center">Rp.&nbsp;<?=number_format(($pajak[$i]['total_harga']/$pajak[$i]['jumlah_barang']),0,"",".")?></td>
                                 <td align="center"><?=$pajak[$i]['jumlah_barang']?> barang dengan item (<?=$pajak[$i]['item']?>) </td>
                                 <td align="center">Rp.&nbsp;<?=number_format($hasil,0,"",".")?></td>
                                 </tr>

@@ -57,6 +57,7 @@ public function insert_warung(){
 		if($query){
 			$email = strtolower(str_replace(" ","",$this->input->post('nama_warung'))).'@localhost';
 			$d = array(
+				'id_warung'=> $this->db->insert_id(),
 				'username' => $this->input->post('nama_warung'),
 				'email' => $email,
 				'password' => md5('12345')
@@ -84,6 +85,7 @@ public function insert_warung(){
 		if($query){
 			$email = strtolower(str_replace(" ","",$this->input->post('nama_warung'))).'@localhost';
 			$d = array(
+				'id_warung'=> $this->db->insert_id(),
 				'username' => $this->input->post('nama_warung'),
 				'email' => $email,
 				'password' => md5('12345')
@@ -164,9 +166,13 @@ public function ubah_warung()
 
 
 
-public function total_warung()
+public function total_warung($status)
 {
+	if($status == 'admin'){
 	return $this->db->query("select * from warung order by id DESC")->num_rows();
+	}else{
+		return $this->db->query("select * from warung where nama_warung = '".$this->session->userdata('username')."' order by id DESC")->num_rows();
+	}
 }
 
 
@@ -175,16 +181,16 @@ public function getdatawarung()
 {
 
 	$hari_ini = date("Y-m-d");
-	$sql = $this->db->query("select warung.id as id, warung.nama_warung as nama_warung,sum(barang_keluar.harga) as total_harga, count(barang_keluar.id_produk) as jumlah_barang, sum(barang_keluar.jumlah) as item,barang_keluar.tanggal_update as tanggal , barang_keluar.id_barang_keluar from warung left join barang_keluar on warung.id = barang_keluar.id_warung where barang_keluar.tanggal_update = '".$hari_ini."' group by warung.id")->result_array();
+	$sql = $this->db->query("select warung.id as id, warung.nama_warung as nama_warung,(sum(barang_keluar.harga)*sum(barang_keluar.jumlah)) as total_harga, count(barang_keluar.id_produk) as jumlah_barang, sum(barang_keluar.jumlah) as item,barang_keluar.tanggal_update as tanggal , barang_keluar.id_barang_keluar from warung left join barang_keluar on warung.id = barang_keluar.id_warung where barang_keluar.tanggal_update = '".$hari_ini."' group by warung.id")->result_array();
 	$jumlah = count($sql);
 	if($jumlah > 0){
 	for($i=0;$i<$jumlah;$i++){
-		$pajak = (10/100) * $sql[$i]['total_harga']; 
+		$pajak = (10/100) * ($sql[$i]['total_harga']/$sql[$i]['jumlah_barang']); 
 		$row[] = array(
 			"id"=> $sql[$i]['id'],
 			"nama_warung"=> $sql[$i]['nama_warung'],
-			"pajak_hari_ini"=> $pajak,
-			"total_terjual"=> $sql[$i]['jumlah_barang'],
+			"pajak_hari_ini"=> number_format($pajak,0,'','.'),
+			"harga"=> number_format(($sql[$i]['total_harga']/$sql[$i]['jumlah_barang']),0,'','.'),
 			"items"=>$sql[$i]['item'],
 			"tanggal"=> $sql[$i]['tanggal'],
 		);
@@ -211,8 +217,11 @@ public function datawarung()
 
 public function getproduk($limit,$start,$keyword)
 {
-	
+	if($this->session->userdata('status') == 'admin'){
 	$sql = $this->db->query("select * from produk where nama_produk like '%".$keyword."%' limit ".$limit.", ".$start."");
+	}else{
+		$sql = $this->db->query("select * from produk where nama_produk like '%".$keyword."%' and id_warung = '".$this->session->userdata('id_warung')."' limit ".$limit.", ".$start."");
+	}
 	return $sql;
 
 }
@@ -240,16 +249,23 @@ public function getdataproduk($id)
 
 public function getbarangmasuk($limit,$start,$keyword)
 {
-	
-	$sql = $this->db->query("select * from barang_masuk where nama_produk like '%".$keyword."%' and status_produk = '1' limit ".$limit.", ".$start."");
+	if($this->session->userdata('status') == 'admin'){
+		$sql = $this->db->query("select * from barang_masuk where nama_produk like '%".$keyword."%' and status_produk = '1' limit ".$limit.", ".$start."");
+	}else{
+		$sql = $this->db->query("select * from barang_masuk where nama_produk like '%".$keyword."%' and status_produk = '1' and id_warung='".$this->session->userdata('id_warung')."' limit ".$limit.", ".$start."");
+	}
 	return $sql;
 
 }
 
 
-public function total_barang_masuk()
+public function total_barang_masuk($status)
 {
-	return $this->db->query("select * from barang_masuk order by id_barang_masuk DESC")->num_rows();
+	if($status == 'admin'){
+		return $this->db->query("select * from barang_masuk order by id_barang_masuk DESC")->num_rows();
+	}else{
+		return $this->db->query("select * from barang_masuk where id_warung = '".$this->session->userdata('id_warung')."' order by id_barang_masuk DESC")->num_rows();
+	}
 }
 
 
@@ -390,15 +406,23 @@ public function insert_to_produk(){
 public function getbarangkeluar($limit,$start,$keyword)
 {
 	
+	if($this->session->userdata('status') == 'admin'){
 	$sql = $this->db->query("SELECT * from barang_keluar where nama_produk like '%".$keyword."%' limit ".$limit.", ".$start."");
+	}else{
+	$sql = $this->db->query("SELECT * from barang_keluar where nama_produk like '%".$keyword."%' and id_warung = '".$this->session->userdata('id_warung')."' limit ".$limit.", ".$start."");	
+	}
 	return $sql;
 
 }
 
 
-public function total_barang_keluar()
+public function total_barang_keluar($status)
 {
-	return $this->db->query("select * from barang_keluar order by id_barang_keluar DESC")->num_rows();
+	if($status == 'admin'){
+		return $this->db->query("select * from barang_keluar order by id_barang_keluar DESC")->num_rows();
+	}else{
+		return $this->db->query("select * from barang_keluar where id_warung = '".$this->session->userdata('id_warung')."' order by id_barang_keluar DESC")->num_rows();
+	}
 }
 
 
@@ -433,7 +457,7 @@ public function getpajak()
 	$sql = $this->db->query("SELECT 
 							warung.id
 							,warung.nama_warung
-							,sum(barang_keluar.harga) AS total_harga
+							,(sum(barang_keluar.harga) * sum(barang_keluar.jumlah)) AS total_harga
 							, count(barang_keluar.id_produk) AS jumlah_barang
 							,barang_keluar.id_barang_keluar
 							,sum(barang_keluar.jumlah) as item 

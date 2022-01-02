@@ -38,6 +38,7 @@ class Auth extends CI_Controller {
                         'email' => $data['log'][0]['email'],
                         'username' => $data['log'][0]['username'],
                         'status' => $data['log'][0]['status'],
+                        'id_warung' => $data['log'][0]['id_warung']
                     );
                     $this->session->set_userdata($newdata);
                     redirect(base_url() . 'auth/dashboard');
@@ -56,9 +57,9 @@ class Auth extends CI_Controller {
             $data['title'] = 'Dashboard Aplikasi Kasir';
             $data['dashboard_active'] = 'active';
             $this->load->model('Admin_model','warung');
-            $data['warung'] = $this->warung->total_warung();
-            $data['bm'] = $this->warung->total_barang_masuk();
-            $data['bk'] = $this->warung->total_barang_keluar();
+            $data['warung'] = $this->warung->total_warung($this->session->userdata('status'));
+            $data['bm'] = $this->warung->total_barang_masuk($this->session->userdata('status'));
+            $data['bk'] = $this->warung->total_barang_keluar($this->session->userdata('status'));
             $data['pajak'] = $this->warung->getpajak();
             $this->load->view('tamplates/header', $data);
             $this->load->view('admin/dashboard', $data);
