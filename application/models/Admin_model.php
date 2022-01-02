@@ -254,7 +254,7 @@ public function total_barang_masuk()
 
 
 public function proses_tambah_barang_masuk(){
-
+	
 	$foto = end(explode(".", $_FILES["foto"]["name"]));
 	$url = base_url('assets/upload/foto/' . time().'.'.$foto);
 	if (!empty($foto)) {
