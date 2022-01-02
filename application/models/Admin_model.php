@@ -51,7 +51,7 @@ public function insert_warung(){
 			'alamat' => $this->input->post('alamat'),
 			'kontak' => $this->input->post('kontak'),
 			'foto' => $url,
-			'modify' => date('d-m-Y'),
+			'modify' => date('Y-m-d'),
 		);
 		$this->db->insert('warung', $data);
 
@@ -66,7 +66,7 @@ public function insert_warung(){
 			'keterangan' => $this->input->post('keterangan'),
 			'alamat' => $this->input->post('alamat'),
 			'kontak' => $this->input->post('kontak'),
-			'modify' => date("Y-m-d"),
+			'modify' => date('Y-m-d'),
 		);
 		$this->db->insert('warung', $data);
 
@@ -115,7 +115,7 @@ public function ubah_warung()
 			'alamat' => $this->input->post('alamat'),
 			'kontak' => $this->input->post('kontak'),
 			'foto' => $url,
-			'modify' => date('d-m-Y'),
+			'modify' => date('Y-m-d'),
 		);
 
 		$this->db->where('id',$id);
@@ -132,7 +132,7 @@ public function ubah_warung()
 			'keterangan' => $this->input->post('keterangan'),
 			'alamat' => $this->input->post('alamat'),
 			'kontak' => $this->input->post('kontak'),
-			'modify' => date('d-m-Y'),
+			'modify' =>date('Y-m-d'),
 		);
 
 		$this->db->where('id',$id);
@@ -408,14 +408,15 @@ public function proses_hapus_barang_keluar($id){
 public function getpajak()
 {
 	$hari_ini = date("Y-m-d");
-	$sql = $this->db->query("select warung.id
+	$sql = $this->db->query("SELECT 
+							warung.id
 							,warung.nama_warung
-							,sum(barang_keluar.harga) as total_harga
-							, count(barang_keluar.id_produk) as jumlah_barang
+							,sum(barang_keluar.harga) AS total_harga
+							, count(barang_keluar.id_produk) AS jumlah_barang
 							,barang_keluar.id_barang_keluar 
-							from 
+							FROM 
 							warung 
-							left join barang_keluar on warung.id = barang_keluar.id_warung where barang_keluar.tanggal_update = '".$hari_ini."' group by warung.id")->result_array();
+							LEFT JOIN barang_keluar ON warung.id = barang_keluar.id_warung WHERE barang_keluar.tanggal_update = '".$hari_ini."' group by warung.id")->result_array();
 	return $sql;
 }
 
