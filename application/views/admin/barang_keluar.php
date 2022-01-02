@@ -30,7 +30,7 @@
                                         <th class="align-middle">No</th>
                                         <th class="align-middle">Nama Produk</th>
                                         <th class="align-middle">Harga</th>
-                                        <th class="align-middle">Stok</th>
+                                        <th class="align-middle">Item</th>
                                         <th class="align-middle">Keterangan</th>
                                         <th class="align-middle">Foto</th>
                                         <th class="align-middle">Tanggal Keluar</th>
