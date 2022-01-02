@@ -12,7 +12,7 @@ public function __construct()
 public function getwarung($limit,$start,$keyword)
 {
 	
-	$sql = $this->db->query("select * from warung where nama_warung like '%".$keyword."%' limit ".$limit.", ".$start."");
+	$sql = $this->db->query("SELECT * from warung where nama_warung like '%".$keyword."%' limit ".$limit.", ".$start."");
 	return $sql;
 
 }
@@ -21,7 +21,7 @@ public function getwarung($limit,$start,$keyword)
 public function getwarungdetail($id)
 {
 	
-	$sql = $this->db->query("select * from warung where id = '".$id."'")->result_array();
+	$sql = $this->db->query("SELECT * from warung where id = '".$id."'")->result_array();
 	return $sql;
 
 }
@@ -98,7 +98,7 @@ public function insert_warung(){
 
 public function edit_warung($id)
 {
-	$sql = $this->db->query("select * from warung where id = '".$id."'");
+	$sql = $this->db->query("SELECT * from warung where id = '".$id."'");
 	$data = $sql->result_array();
 	return $data;
 }
@@ -166,7 +166,7 @@ public function ubah_warung()
 
 public function total_warung()
 {
-	return $this->db->query("select * from warung order by id DESC")->num_rows();
+	return $this->db->query("SELECT * from warung order by id DESC")->num_rows();
 }
 
 
@@ -175,7 +175,7 @@ public function getdatawarung()
 {
 
 	$hari_ini = date("Y-m-d");
-	$sql = $this->db->query("select warung.id as id, warung.nama_warung as nama_warung,sum(barang_keluar.harga) as total_harga, count(barang_keluar.id_produk) as jumlah_barang, sum(barang_keluar.jumlah) as item,barang_keluar.tanggal_update as tanggal , barang_keluar.id_barang_keluar from warung left join barang_keluar on warung.id = barang_keluar.id_warung where barang_keluar.tanggal_update = '".$hari_ini."' group by warung.id")->result_array();
+	$sql = $this->db->query("SELECT warung.id as id, warung.nama_warung as nama_warung,sum(barang_keluar.harga) as total_harga, count(barang_keluar.id_produk) as jumlah_barang, sum(barang_keluar.jumlah) as item,barang_keluar.tanggal_update as tanggal , barang_keluar.id_barang_keluar from warung left join barang_keluar on warung.id = barang_keluar.id_warung where barang_keluar.tanggal_update = '".$hari_ini."' group by warung.id")->result_array();
 	$jumlah = count($sql);
 	if($jumlah > 0){
 	for($i=0;$i<$jumlah;$i++){
@@ -200,7 +200,7 @@ public function getdatawarung()
 public function datawarung()
 {
 	
-	$sql = $this->db->query("select * from warung ")->result_array();
+	$sql = $this->db->query("SELECT * from warung ")->result_array();
 	return $sql;
 
 }
@@ -212,7 +212,7 @@ public function datawarung()
 public function getproduk($limit,$start,$keyword)
 {
 	
-	$sql = $this->db->query("select * from produk where nama_produk like '%".$keyword."%' limit ".$limit.", ".$start."");
+	$sql = $this->db->query("SELECT * from produk where nama_produk like '%".$keyword."%' limit ".$limit.", ".$start."");
 	return $sql;
 
 }
@@ -220,7 +220,7 @@ public function getproduk($limit,$start,$keyword)
 
 public function total_produk()
 {
-	return $this->db->query("select * from produk order by id_produk DESC")->num_rows();
+	return $this->db->query("SELECT * from produk order by id_produk DESC")->num_rows();
 }
 
 
@@ -228,7 +228,7 @@ public function total_produk()
 public function getdataproduk($id)
 {
 	
-	$sql = $this->db->query("select * from produk where id_warung = '".$id."'")->result_array();
+	$sql = $this->db->query("SELECT * from produk where id_warung = '".$id."'")->result_array();
 	return $sql;
 
 }
@@ -241,7 +241,7 @@ public function getdataproduk($id)
 public function getbarangmasuk($limit,$start,$keyword)
 {
 	
-	$sql = $this->db->query("select * from barang_masuk where nama_produk like '%".$keyword."%' and status_produk = '1' limit ".$limit.", ".$start."");
+	$sql = $this->db->query("SELECT * FROM barang_masuk where nama_produk like '%".$keyword."%' and status_produk = '1' limit ".$limit.", ".$start."");
 	return $sql;
 
 }
@@ -249,7 +249,7 @@ public function getbarangmasuk($limit,$start,$keyword)
 
 public function total_barang_masuk()
 {
-	return $this->db->query("select * from barang_masuk order by id_produk DESC")->num_rows();
+	return $this->db->query("SELECT * from barang_masuk order by id_produk DESC")->num_rows();
 }
 
 
@@ -309,7 +309,7 @@ public function hapus_barang_masuk($id)
 
 public function edit_barang_masuk($id)
 {
-	$sql = $this->db->query("select * from barang_masuk where id_barang_masuk = '".$id."'");
+	$sql = $this->db->query("SELECT * from barang_masuk where id_barang_masuk = '".$id."'");
 	$data = $sql->result_array();
 	return $data;
 }
@@ -364,8 +364,8 @@ public function update_barang_masuk(){
 }
 
 public function insert_to_produk(){
-	$ambil = $this->db->query("select * from barang_masuk where id_barang_masuk = '".$this->input->post('id_barang_masuk')."'")->result_array();
-	$cek = $this->db->query("select * from produk where kode_produk = '".$this->input->post('id_barang_masuk')."'")->result_array();
+	$ambil = $this->db->query("SELECT * from barang_masuk where id_barang_masuk = '".$this->input->post('id_barang_masuk')."'")->result_array();
+	$cek = $this->db->query("SELECT * from produk where kode_produk = '".$this->input->post('id_barang_masuk')."'")->result_array();
 	$tgl = date('Y-m-d');
 	$jml = count($cek);
 	if($jml > 0){
@@ -390,7 +390,7 @@ public function insert_to_produk(){
 public function getbarangkeluar($limit,$start,$keyword)
 {
 	
-	$sql = $this->db->query("select * from barang_keluar where nama_produk like '%".$keyword."%' limit ".$limit.", ".$start."");
+	$sql = $this->db->query("SELECT * from barang_keluar where nama_produk like '%".$keyword."%' limit ".$limit.", ".$start."");
 	return $sql;
 
 }
@@ -398,14 +398,14 @@ public function getbarangkeluar($limit,$start,$keyword)
 
 public function total_barang_keluar()
 {
-	return $this->db->query("select * from barang_keluar order by id_produk DESC")->num_rows();
+	return $this->db->query("SELECT * from barang_keluar order by id_produk DESC")->num_rows();
 }
 
 
 public function insert_barang_keluar(){
 
 	$tgl = date("Y-m-d");
-	$ambil = $this->db->query("select * from produk where id_produk = '".$this->input->post('id_produk')."'")->result_array();
+	$ambil = $this->db->query("SELECT * from produk where id_produk = '".$this->input->post('id_produk')."'")->result_array();
 	if(empty($this->input->post('jumlah')) || $this->input->post('jumlah') > $ambil[0]['stok'] ){
 		$response = "failed , invalid amount ";
 	}else{
