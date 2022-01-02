@@ -52,10 +52,10 @@
                                             <td><?=++$page?></td>
                                             <td><?= $barang_masuk[$a]['nama_produk'] ?></td>
                                             <td>Rp.&nbsp;<?=number_format($barang_masuk[$a]['harga'],0,"",".")?></td>
-                                            <td><?=$barang_masuk[$a]['stok']?></td>
+                                            <td>Rp.&nbsp;<?=number_format($barang_masuk[$a]['stok'],0,"",".")?></td>
                                             <td><?=$barang_masuk[$a]['keterangan']?></td>
                                             <td><img src="<?= $barang_masuk[$a]['foto']?>" class="img-fluid" width="100"
-                                                   ><?= $barang_masuk[$a]['foto']?></td>
+                                                   ></td>
                                             <td><?= $this->libs->ymdhis2dMonthy($barang_masuk[$a]['tanggal_update'])?></td>
                                             <td>
                                                 <a href="<?= base_url('auth/hapus_barang_masuk/'.$barang_masuk[$a]['id_barang_masuk']); ?>"
