@@ -55,10 +55,10 @@ public function insert_warung(){
 		);
 		$query = $this->db->insert('warung', $data);
 		if($query){
-
+			$email = strtolower(str_replace(" ","",$this->input->post('nama_warung'))).'@localhost';
 			$d = array(
 				'username' => $this->input->post('nama_warung'),
-				'email' => strtolower(str_replace(" ","",$this->input->post('nama_warung'))),
+				'email' => $email,
 				'password' => md5('12345')
 			);
 
@@ -82,10 +82,10 @@ public function insert_warung(){
 		$query = $this->db->insert('warung', $data);
 
 		if($query){
-
+			$email = strtolower(str_replace(" ","",$this->input->post('nama_warung'))).'@localhost';
 			$d = array(
 				'username' => $this->input->post('nama_warung'),
-				'email' => strtolower(str_replace(" ","",$this->input->post('nama_warung'))),
+				'email' => $email,
 				'password' => md5('12345')
 			);
 
