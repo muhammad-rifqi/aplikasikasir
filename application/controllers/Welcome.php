@@ -68,7 +68,17 @@ class Welcome extends CI_Controller {
 	 
 		$this->load->model('Admin_model','warung');
 		$array = $this->warung->datawarung();
-		echo json_encode($array);
+		if(count($array) > 0){
+			$response = array(
+				"data"=>$array
+			);
+		}else{
+			$response = array(
+				"data"=>null
+			);
+		}
+		echo json_encode($response);
+	
 	}
  
 
@@ -79,7 +89,16 @@ class Welcome extends CI_Controller {
 		$id = $this->uri->segment(2);
 		$this->load->model('Admin_model','produk');
 		$array = $this->produk->getdataproduk($id);
-		echo json_encode($array);
+		if(count($array) > 0){
+			$response = array(
+				"data"=>$array
+			);
+		}else{
+			$response = array(
+				"data"=>null
+			);
+		}
+		echo json_encode($response);
 	}
  
 
@@ -88,7 +107,16 @@ class Welcome extends CI_Controller {
 	{
 		$this->load->model('Admin_model','pajak');
 		$array = $this->pajak->getdatawarung();
-		echo json_encode($array);
+		if(count($array) > 0){
+			$response = array(
+				"data"=>$array
+			);
+		}else{
+			$response = array(
+				"data"=>null
+			);
+		}
+		echo json_encode($response);
 	}
  
 

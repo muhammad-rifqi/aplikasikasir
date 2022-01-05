@@ -433,6 +433,7 @@ public function insert_barang_keluar(){
 	if(empty($this->input->post('jumlah')) || $this->input->post('jumlah') > $ambil[0]['stok'] ){
 		$response = "failed , invalid amount ";
 	}else{
+		$this->db->query("insert into transaksi(id_warung,id_produk,nama_produk,harga,jumlah,keterangan,foto,tanggal_update)values('".$ambil[0]['id_warung']."','".$ambil[0]['kode_produk']."','".$ambil[0]['nama_produk']."','".$ambil[0]['harga']."','".$this->input->post('jumlah')."','".$ambil[0]['keterangan']."','".$ambil[0]['foto']."','".$tgl."')");
 		$this->db->query("insert into barang_keluar(id_warung,id_produk,nama_produk,harga,jumlah,keterangan,foto,tanggal_update)values('".$ambil[0]['id_warung']."','".$ambil[0]['kode_produk']."','".$ambil[0]['nama_produk']."','".$ambil[0]['harga']."','".$this->input->post('jumlah')."','".$ambil[0]['keterangan']."','".$ambil[0]['foto']."','".$tgl."')");
 		$this->db->query("update produk set stok ='".($ambil[0]['stok']-$this->input->post('jumlah'))."' where id_produk = '".$this->input->post('id_produk')."'");
 		$response = "success";
@@ -477,5 +478,21 @@ public function proses_hapus_produk($id){
 
 //end pajak
 
+
+
+
+public function gettransaksi($limit,$start,$keyword)
+{
+	if($this->session->userdata('status') == 'admin'){
+	$sql = $this->db->query("select * from transaksi where nama_produk like '%".$keyword."%' limit ".$limit.", ".$start."");
+	}else{
+		$sql = $this->db->query("select * from transaksi where nama_produk like '%".$keyword."%' and id_warung = '".$this->session->userdata('id_warung')."' limit ".$limit.", ".$start."");
+	}
+	return $sql;
+}
+
+
+
+//end tranksaksi
 } 
 

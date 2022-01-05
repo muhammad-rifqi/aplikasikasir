@@ -20,7 +20,6 @@
                     <div class="card">
                         <div class="card-header d-flex">
                             <h4>List Produk</h4>
-                            
                         </div>
                         <div class="card-body">
                             <?= $this->session->flashdata('message');?>
