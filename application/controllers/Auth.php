@@ -524,6 +524,24 @@ class Auth extends CI_Controller {
             
         }
 
+        public function hapus_transaksi($id)
+        {
+          
+            $id = $this->uri->segment(3);
+            $this->load->model('Admin_model','transaksi');
+            $this->transaksi->proses_hapus_transaksi($id);
+            $this->session->set_flashdata('message', '<div class="alert alert-success alert-dismissible show fade"><div class="alert-body"><button class="close" data-dismiss="alert"><span>×</span></button>Transaksi berhasil dihapus !</div></div>');
+            redirect('auth/transaksi');
+        }
 
+
+        public function print(){
+
+        $this->load->model('Admin_model','transaksi');
+        $data['transaksi'] = $this->transaksi->print_transaksi();
+        $this->load->view('admin/print', $data);
+
+        }
+     
 
 }

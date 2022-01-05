@@ -429,11 +429,12 @@ public function total_barang_keluar($status)
 public function insert_barang_keluar(){
 
 	$tgl = date("Y-m-d");
+	$ids = session_id();
 	$ambil = $this->db->query("select * from produk where id_produk = '".$this->input->post('id_produk')."'")->result_array();
 	if(empty($this->input->post('jumlah')) || $this->input->post('jumlah') > $ambil[0]['stok'] ){
 		$response = "failed , invalid amount ";
 	}else{
-		$this->db->query("insert into transaksi(id_warung,id_produk,nama_produk,harga,jumlah,keterangan,foto,tanggal_update)values('".$ambil[0]['id_warung']."','".$ambil[0]['kode_produk']."','".$ambil[0]['nama_produk']."','".$ambil[0]['harga']."','".$this->input->post('jumlah')."','".$ambil[0]['keterangan']."','".$ambil[0]['foto']."','".$tgl."')");
+		$this->db->query("insert into transaksi(id_warung,id_produk,nama_produk,harga,jumlah,keterangan,foto,tanggal_update,session_id)values('".$ambil[0]['id_warung']."','".$ambil[0]['kode_produk']."','".$ambil[0]['nama_produk']."','".$ambil[0]['harga']."','".$this->input->post('jumlah')."','".$ambil[0]['keterangan']."','".$ambil[0]['foto']."','".$tgl."','".$ids."')");
 		$this->db->query("insert into barang_keluar(id_warung,id_produk,nama_produk,harga,jumlah,keterangan,foto,tanggal_update)values('".$ambil[0]['id_warung']."','".$ambil[0]['kode_produk']."','".$ambil[0]['nama_produk']."','".$ambil[0]['harga']."','".$this->input->post('jumlah')."','".$ambil[0]['keterangan']."','".$ambil[0]['foto']."','".$tgl."')");
 		$this->db->query("update produk set stok ='".($ambil[0]['stok']-$this->input->post('jumlah'))."' where id_produk = '".$this->input->post('id_produk')."'");
 		$response = "success";
@@ -491,8 +492,24 @@ public function gettransaksi($limit,$start,$keyword)
 	return $sql;
 }
 
+public function proses_hapus_transaksi($id)
+{
+$ambiltransaksi = $this->db->query("select * from transaksi where id_transaksi = '".$id."'")->result_array();
+$ambilproduk = $this->db->query("select * from produk where kode_produk = '".$ambiltransaksi[0]['id_produk']."'")->result_array();
+$sql = $this->db->query("update produk set stok ='".($ambilproduk[0]['stok']+$ambiltransaksi[0]['jumlah'])."' where id_produk = '".$ambilproduk[0]['id_produk']."'");	session_regenerate_id();
+if($sql){
+	return $this->db->query("delete from transaksi where id_transaksi = '".$id."'");
+}else{
+	return false;
+}
+}
 
-
+public function print_transaksi()
+{
+	$id = session_id();
+	$data = $this->db->query("select * from transaksi where session_id = '".$id."'")->result_array();
+	return $data;
+}
 //end tranksaksi
 } 
 
