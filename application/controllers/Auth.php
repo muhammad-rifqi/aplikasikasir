@@ -535,7 +535,7 @@ class Auth extends CI_Controller {
         }
 
 
-        public function print(){
+        public function printdata(){
 
         $this->load->model('Admin_model','transaksi');
         $data['transaksi'] = $this->transaksi->print_transaksi();

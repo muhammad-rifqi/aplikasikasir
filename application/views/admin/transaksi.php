@@ -91,7 +91,7 @@
                             <?php echo $this->pagination->create_links(); ?>
                         </div>
 
-                        <p align="right" style="margin-right:30px"> <a href="<?= base_url('auth/print'); ?>" target="__blank" class="btn btn-primary btn-sm">Print</a></p>
+                        <p align="right" style="margin-right:30px"> <a href="<?= base_url('auth/printdata'); ?>" target="__blank" class="btn btn-primary btn-sm">Print</a></p>
                         
                     </div>
                 </div>
