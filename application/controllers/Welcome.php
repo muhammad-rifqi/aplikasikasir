@@ -119,6 +119,22 @@ class Welcome extends CI_Controller {
 		echo json_encode($response);
 	}
  
+	public function api_pajak_perwarung()
+	{
+		$id = $this->uri->segment(2);
+		$this->load->model('Admin_model','pajak');
+		$array = $this->pajak->getperwarung($id);
+		if(count($array) > 0){
+			$response = array(
+				"data"=>$array
+			);
+		}else{
+			$response = array(
+				"data"=>null
+			);
+		}
+		echo json_encode($response);
+	}
 
 
 	public function register()

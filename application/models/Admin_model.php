@@ -203,6 +203,34 @@ public function getdatawarung()
 }
 
 
+
+public function getperwarung($id)
+{
+
+	$hari_ini = date("Y-m-d");
+	$sql = $this->db->query("select warung.id as id, warung.nama_warung as nama_warung,(sum(barang_keluar.harga)*sum(barang_keluar.jumlah)) as total_harga, count(barang_keluar.id_produk) as jumlah_barang, sum(barang_keluar.jumlah) as item,barang_keluar.tanggal_update as tanggal , barang_keluar.id_barang_keluar from warung left join barang_keluar on warung.id = barang_keluar.id_warung where barang_keluar.tanggal_update = '".$hari_ini."' and warung.id = '".$id."' group by warung.id")->result_array();
+	$jumlah = count($sql);
+	if($jumlah > 0){
+	
+		$pajak = (10/100) * ($sql[0]['total_harga']/$sql[0]['jumlah_barang']); 
+		$row[] = array(
+			"id"=> $sql[0]['id'],
+			"nama_warung"=> $sql[0]['nama_warung'],
+			"pajak_hari_ini"=> number_format($pajak,0,'','.'),
+			"harga"=> number_format(($sql[0]['total_harga']/$sql[0]['jumlah_barang']),0,'','.'),
+			"items"=>$sql[0]['item'],
+			"tanggal"=> $sql[0]['tanggal'],
+		);
+
+	
+	}else{
+		$row = array();
+	}
+	return $row;
+}
+
+
+
 public function datawarung()
 {
 	
