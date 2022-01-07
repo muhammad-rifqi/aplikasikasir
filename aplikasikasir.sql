@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jan 05, 2022 at 10:06 AM
+-- Generation Time: Jan 07, 2022 at 05:04 PM
 -- Server version: 10.4.19-MariaDB
 -- PHP Version: 7.3.28
 
@@ -46,8 +46,16 @@ CREATE TABLE `barang_keluar` (
 INSERT INTO `barang_keluar` (`id_barang_keluar`, `id_warung`, `id_produk`, `nama_produk`, `harga`, `jumlah`, `keterangan`, `foto`, `tanggal_update`) VALUES
 (12, 10, 10, 'Coco Cola', 20000, 300, 'Lengkap', 'http://localhost/aplikasikasir/assets/upload/foto/1641142397.jpg', '2022-01-02'),
 (13, 10, 10, 'Coco Cola', 20000, 100, 'Lengkap', 'http://localhost/aplikasikasir/assets/upload/foto/1641142397.jpg', '2022-01-02'),
-(14, 8, 7, 'Kopi Kapal Api', 5000, 250, 'Full barang', 'http://localhost/aplikasikasir/assets/upload/foto/1641140302.jpg', '2022-01-02'),
-(15, 8, 7, 'Kopi Kapal Api', 5000, 50, 'Full barang', 'http://localhost/aplikasikasir/assets/upload/foto/1641140302.jpg', '2022-01-05');
+(14, 8, 7, 'Kopi Kapal Api', 5000, 250, 'Full barang', 'http://localhost/aplikasikasir/assets/upload/foto/1641140302.jpg', '2022-01-07'),
+(15, 8, 7, 'Kopi Kapal Api', 5000, 50, 'Full barang', 'http://localhost/aplikasikasir/assets/upload/foto/1641140302.jpg', '2022-01-07'),
+(16, 10, 10, 'Coco Cola', 20000, 50, 'Lengkap', 'http://localhost/aplikasikasir/assets/upload/foto/1641142397.jpg', '2022-01-05'),
+(17, 8, 7, 'Kopi Kapal Api', 5000, 50, 'Full barang', 'http://localhost/aplikasikasir/assets/upload/foto/1641140302.jpg', '2022-01-05'),
+(18, 10, 10, 'Coco Cola', 20000, 50, 'Lengkap', 'http://localhost/aplikasikasir/assets/upload/foto/1641142397.jpg', '2022-01-05'),
+(19, 10, 10, 'Coco Cola', 20000, 100, 'Lengkap', 'http://localhost/aplikasikasir/assets/upload/foto/1641142397.jpg', '2022-01-05'),
+(20, 8, 7, 'Kopi Kapal Api', 5000, 50, 'Full barang', 'http://localhost/aplikasikasir/assets/upload/foto/1641140302.jpg', '2022-01-05'),
+(21, 10, 10, 'Coco Cola', 20000, 50, 'Lengkap', 'http://localhost/aplikasikasir/assets/upload/foto/1641142397.jpg', '2022-01-05'),
+(22, 10, 10, 'Coco Cola', 20000, 50, 'Lengkap', 'http://localhost/aplikasikasir/assets/upload/foto/1641142397.jpg', '2022-01-05'),
+(23, 8, 7, 'Kopi Kapal Api', 5000, 20, 'Full barang', 'http://localhost/aplikasikasir/assets/upload/foto/1641140302.jpg', '2022-01-07');
 
 -- --------------------------------------------------------
 
@@ -100,8 +108,8 @@ CREATE TABLE `produk` (
 --
 
 INSERT INTO `produk` (`id_produk`, `id_warung`, `kode_produk`, `nama_produk`, `harga`, `stok`, `keterangan`, `foto`, `tanggal_update`) VALUES
-(7, 10, '10', 'Coco Cola', 20000, 100, 'Lengkap', 'http://localhost/aplikasikasir/assets/upload/foto/1641142397.jpg', '2022-01-02'),
-(8, 8, '7', 'Kopi Kapal Api', 5000, 200, 'Full barang', 'http://localhost/aplikasikasir/assets/upload/foto/1641140302.jpg', '2022-01-02');
+(7, 10, '10', 'Coco Cola', 20000, 350, 'Lengkap', 'http://localhost/aplikasikasir/assets/upload/foto/1641142397.jpg', '2022-01-02'),
+(8, 8, '7', 'Kopi Kapal Api', 5000, 180, 'Full barang', 'http://localhost/aplikasikasir/assets/upload/foto/1641140302.jpg', '2022-01-02');
 
 -- --------------------------------------------------------
 
@@ -118,15 +126,16 @@ CREATE TABLE `transaksi` (
   `jumlah` int(11) NOT NULL,
   `keterangan` text NOT NULL,
   `foto` varchar(255) NOT NULL,
-  `tanggal_update` date NOT NULL
+  `tanggal_update` date NOT NULL,
+  `session_id` text NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Dumping data for table `transaksi`
 --
 
-INSERT INTO `transaksi` (`id_transaksi`, `id_warung`, `id_produk`, `nama_produk`, `harga`, `jumlah`, `keterangan`, `foto`, `tanggal_update`) VALUES
-(2, 8, 7, 'Kopi Kapal Api', 5000, 50, 'Full barang', 'http://localhost/aplikasikasir/assets/upload/foto/1641140302.jpg', '2022-01-05');
+INSERT INTO `transaksi` (`id_transaksi`, `id_warung`, `id_produk`, `nama_produk`, `harga`, `jumlah`, `keterangan`, `foto`, `tanggal_update`, `session_id`) VALUES
+(10, 8, 7, 'Kopi Kapal Api', 5000, 20, 'Full barang', 'http://localhost/aplikasikasir/assets/upload/foto/1641140302.jpg', '2022-01-07', '7gpfj9ipoctbsounh6hc1ovp9hi8icl8');
 
 -- --------------------------------------------------------
 
@@ -230,7 +239,7 @@ ALTER TABLE `warung`
 -- AUTO_INCREMENT for table `barang_keluar`
 --
 ALTER TABLE `barang_keluar`
-  MODIFY `id_barang_keluar` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
+  MODIFY `id_barang_keluar` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=24;
 
 --
 -- AUTO_INCREMENT for table `barang_masuk`
@@ -248,7 +257,7 @@ ALTER TABLE `produk`
 -- AUTO_INCREMENT for table `transaksi`
 --
 ALTER TABLE `transaksi`
-  MODIFY `id_transaksi` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id_transaksi` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
 
 --
 -- AUTO_INCREMENT for table `user`
