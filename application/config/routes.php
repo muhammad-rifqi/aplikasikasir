@@ -56,6 +56,7 @@ $route['api-warung'] = 'welcome/api_warung';
 $route['api-pajak'] = 'welcome/api_pajak';
 $route['api-produk/(:num)'] = 'welcome/api_produk/$1';
 $route['api-pajak-perwarung/(:num)'] = 'welcome/api_pajak_perwarung/$1';
+$route['api-profile/(:num)'] = 'welcome/api_profile/$1';
 $route['logout'] = 'welcome/logout';
 $route['404_override'] = '';
 $route['translate_uri_dashes'] = FALSE;

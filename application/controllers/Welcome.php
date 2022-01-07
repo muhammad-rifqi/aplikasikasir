@@ -136,6 +136,24 @@ class Welcome extends CI_Controller {
 		echo json_encode($response);
 	}
 
+	public function api_profile()
+	{
+		$id = $this->uri->segment(2);
+		$this->load->model('Admin_model','profile');
+		$array = $this->profile->getprofile($id);
+		if(count($array) > 0){
+			$response = array(
+				"data"=>$array
+			);
+		}else{
+			$response = array(
+				"data"=>null
+			);
+		}
+		echo json_encode($response);
+	}
+
+
 
 	public function register()
 	{

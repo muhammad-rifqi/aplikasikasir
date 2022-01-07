@@ -539,5 +539,27 @@ public function print_transaksi()
 	return $data;
 }
 //end tranksaksi
+
+
+public function getprofile($id)
+{
+
+	$sql = $this->db->query("select * from user where id_user = '".$id."'")->result_array();
+	$jumlah = count($sql);
+	if($jumlah > 0){
+		$row[] = array(
+			"id_user"=> $sql[0]['id_user'],
+			"id_warung"=> $this->db->query("select * from warung where id = '".$sql[0]['id_warung']."'")->result_array(),
+			"username"=> $sql[0]['username'],
+			"email"=> $sql[0]['email'],
+			"status"=>$sql[0]['status']
+		);
+
+	
+	}else{
+		$row = array();
+	}
+	return $row;
+}
 } 
 
